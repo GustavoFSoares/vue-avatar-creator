@@ -42,3 +42,41 @@ export type AvatarWidgets = {
   soccer: IWidget<SoccerShape>
   tshirt: IWidget<TshirtShape>
 }
+
+// export type AvatarOptions = {
+//   'accessibility-item': AccessibilityItemShape
+//   bag: BagShape
+//   beard: BeardShape
+//   body: BodyShape
+//   coat: CoatShape
+//   dress: DressShape
+//   face: FaceShape
+//   gedgets: GedgetsShape
+//   glass: GlassShape
+//   headpiece: HeadpieceShape
+//   mustache: MustacheShape
+//   necklace: NecklaceShape
+//   pant: PantShape
+//   shoe: ShoeShape
+//   soccer: SoccerShape
+//   tshirt: TshirtShape
+// }
+
+export type AvatarOptions = {
+  'accessibility-item': string[]
+  bag: string[]
+  beard: string[]
+  body: string[]
+  coat: string[]
+  dress: string[]
+  face: string[]
+  gedgets: string[]
+  glass: string[]
+  headpiece: string[]
+  mustache: string[]
+  necklace: string[]
+  pant: string[]
+  shoe: string[]
+  soccer: string[]
+  tshirt: string[]
+}
