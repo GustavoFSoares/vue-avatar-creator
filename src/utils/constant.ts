@@ -1,4 +1,4 @@
-import type { AvatarOptions } from '../types'
+import type { AvatarOptions } from '../types';
 import {
   // AccessibilityItemShape,
   // BagShape,
@@ -17,11 +17,11 @@ import {
   // SoccerShape,
   // TshirtShape,
   WidgetType,
-} from '../enums'
+} from '../enums';
 // import type { AvatarOption, AvatarSettings } from '../types'
 
 export const AVATAR_LAYER: Readonly<{
-  [key in `${WidgetType}`]: { zIndex: number }
+  [key in `${WidgetType}`]: { zIndex: number };
 }> = {
   [WidgetType.AccessibilityItemShape]: {
     zIndex: 0,
@@ -71,7 +71,7 @@ export const AVATAR_LAYER: Readonly<{
   [WidgetType.TshirtShape]: {
     zIndex: 0,
   },
-}
+};
 
 export const AVATAR_WIDGETS: Readonly<WidgetType[]> = [
   WidgetType.AccessibilityItemShape,
@@ -90,7 +90,7 @@ export const AVATAR_WIDGETS: Readonly<WidgetType[]> = [
   WidgetType.ShoeShape,
   WidgetType.SoccerShape,
   WidgetType.TshirtShape,
-]
+];
 
 export const AVATAR_OPTIONS: Readonly<AvatarOptions> = {
   [WidgetType.AccessibilityItemShape]: Object.values(
@@ -111,7 +111,7 @@ export const AVATAR_OPTIONS: Readonly<AvatarOptions> = {
   [WidgetType.ShoeShape]: Object.values(WidgetType.ShoeShape),
   [WidgetType.SoccerShape]: Object.values(WidgetType.SoccerShape),
   [WidgetType.TshirtShape]: Object.values(WidgetType.TshirtShape),
-}
+};
 
 // export const getAvatarFace = async (
 //   title: string,
@@ -137,11 +137,11 @@ export const AVATAR_OPTIONS: Readonly<AvatarOptions> = {
 
 export const SCREEN = {
   lg: 976,
-} as const
+} as const;
 
-export const NONE = 'none'
+export const NONE = 'none';
 
-export const TRIGGER_PROBABILITY = 0.1
+export const TRIGGER_PROBABILITY = 0.1;
 
 // export const SPECIAL_AVATARS: Readonly<AvatarOption[]> = [
 //   {
@@ -236,6 +236,6 @@ export const NOT_COMPATIBLE_AGENTS = [
   'micromessenger',
   'weibo',
   'douban',
-] as const
+] as const;
 
-export const DOWNLOAD_DELAY = 800
+export const DOWNLOAD_DELAY = 800;

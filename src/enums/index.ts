@@ -151,4 +151,4 @@ export type WidgetShape =
   | PantShape
   | ShoeShape
   | SoccerShape
-  | TshirtShape
+  | TshirtShape;

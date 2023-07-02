@@ -7,10 +7,10 @@ module.exports = {
   quoteProps: 'as-needed',
   rangeStart: 0,
   rangeEnd: Infinity,
-  semi: false,
+  semi: true,
   singleQuote: true,
   tabWidth: 2,
   trailingComma: 'es5',
   useTabs: false,
-  endOfLine: 'auto'
+  endOfLine: 'auto',
 };

@@ -1,5 +1,5 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
@@ -54,6 +54,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 1,
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    'vue/multi-word-component-names': 'off',
   },
   ignorePatterns: [
     'dist',
@@ -63,4 +64,4 @@ module.exports = {
     '!.stylelintrc.js',
     '!.lintstagedrc.js',
   ],
-}
+};
