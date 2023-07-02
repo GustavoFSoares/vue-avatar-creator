@@ -24,115 +24,115 @@ export enum WidgetType {
  */
 
 export enum AccessibilityItemShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum BagShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum BeardShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum BodyShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum CoatShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum DressShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum FaceShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum GedgetsShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum GlassShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum HeadpieceShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum MustacheShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum NecklaceShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum PantShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum ShoeShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum SoccerShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export enum TshirtShape {
-  itemA = 'itemA',
-  itemB = 'itemB',
-  itemC = 'itemC',
-  itemD = 'itemD',
+  itemA = 'item-A',
+  itemB = 'item-B',
+  itemC = 'item-C',
+  itemD = 'item-D',
 }
 
 export type WidgetShape =

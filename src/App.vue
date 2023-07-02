@@ -1,53 +1,29 @@
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
+  <main class="main-page">
+    <aside class="avatar-preview">preview</aside>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
+    <section class="avatar-selecter">
+      <WidgetList />
+    </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-import TheWelcome from './components/TheWelcome.vue';
+import WidgetList from './components/WidgetList/index.vue';
 </script>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<style lang="scss" scoped>
+.main-page {
+  width: 100%;
+  height: 100%;
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  display: flex;
+  gap: 35px;
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .avatar-preview {
+    width: 305px;
+    min-height: 300px;
+    background: red;
   }
 }
 </style>

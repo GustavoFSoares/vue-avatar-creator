@@ -1,21 +1,21 @@
 import type { AvatarOptions } from '../types';
 import {
-  // AccessibilityItemShape,
-  // BagShape,
-  // BeardShape,
-  // BodyShape,
-  // CoatShape,
-  // DressShape,
-  // FaceShape,
-  // GedgetsShape,
-  // GlassShape,
-  // HeadpieceShape,
-  // MustacheShape,
-  // NecklaceShape,
-  // PantShape,
-  // ShoeShape,
-  // SoccerShape,
-  // TshirtShape,
+  AccessibilityItemShape,
+  BagShape,
+  BeardShape,
+  BodyShape,
+  CoatShape,
+  DressShape,
+  FaceShape,
+  GedgetsShape,
+  GlassShape,
+  HeadpieceShape,
+  MustacheShape,
+  NecklaceShape,
+  PantShape,
+  ShoeShape,
+  SoccerShape,
+  TshirtShape,
   WidgetType,
 } from '../enums';
 // import type { AvatarOption, AvatarSettings } from '../types'
@@ -92,25 +92,25 @@ export const AVATAR_WIDGETS: Readonly<WidgetType[]> = [
   WidgetType.TshirtShape,
 ];
 
+console.log(AccessibilityItemShape);
+
 export const AVATAR_OPTIONS: Readonly<AvatarOptions> = {
-  [WidgetType.AccessibilityItemShape]: Object.values(
-    WidgetType.AccessibilityItemShape
-  ),
-  [WidgetType.BagShape]: Object.values(WidgetType.BagShape),
-  [WidgetType.BeardShape]: Object.values(WidgetType.BeardShape),
-  [WidgetType.BodyShape]: Object.values(WidgetType.BodyShape),
-  [WidgetType.CoatShape]: Object.values(WidgetType.CoatShape),
-  [WidgetType.DressShape]: Object.values(WidgetType.DressShape),
-  [WidgetType.FaceShape]: Object.values(WidgetType.FaceShape),
-  [WidgetType.GedgetsShape]: Object.values(WidgetType.GedgetsShape),
-  [WidgetType.GlassShape]: Object.values(WidgetType.GlassShape),
-  [WidgetType.HeadpieceShape]: Object.values(WidgetType.HeadpieceShape),
-  [WidgetType.MustacheShape]: Object.values(WidgetType.MustacheShape),
-  [WidgetType.NecklaceShape]: Object.values(WidgetType.NecklaceShape),
-  [WidgetType.PantShape]: Object.values(WidgetType.PantShape),
-  [WidgetType.ShoeShape]: Object.values(WidgetType.ShoeShape),
-  [WidgetType.SoccerShape]: Object.values(WidgetType.SoccerShape),
-  [WidgetType.TshirtShape]: Object.values(WidgetType.TshirtShape),
+  [WidgetType.AccessibilityItemShape]: Object.values(AccessibilityItemShape),
+  [WidgetType.BagShape]: Object.values(BagShape),
+  [WidgetType.BeardShape]: Object.values(BeardShape),
+  [WidgetType.BodyShape]: Object.values(BodyShape),
+  [WidgetType.CoatShape]: Object.values(CoatShape),
+  [WidgetType.DressShape]: Object.values(DressShape),
+  [WidgetType.FaceShape]: Object.values(FaceShape),
+  [WidgetType.GedgetsShape]: Object.values(GedgetsShape),
+  [WidgetType.GlassShape]: Object.values(GlassShape),
+  [WidgetType.HeadpieceShape]: Object.values(HeadpieceShape),
+  [WidgetType.MustacheShape]: Object.values(MustacheShape),
+  [WidgetType.NecklaceShape]: Object.values(NecklaceShape),
+  [WidgetType.PantShape]: Object.values(PantShape),
+  [WidgetType.ShoeShape]: Object.values(ShoeShape),
+  [WidgetType.SoccerShape]: Object.values(SoccerShape),
+  [WidgetType.TshirtShape]: Object.values(TshirtShape),
 };
 
 // export const getAvatarFace = async (
