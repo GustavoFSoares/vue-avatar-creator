@@ -1,20 +1,20 @@
 export enum WidgetType {
-  AccessibilityItemShape = 'accessibility-item',
-  BagShape = 'bag',
-  BeardShape = 'beard',
-  BodyShape = 'body',
-  CoatShape = 'coat',
-  DressShape = 'dress',
-  FaceShape = 'face',
-  GedgetsShape = 'gedgets',
-  GlassShape = 'glass',
-  HeadpieceShape = 'headpiece',
-  MustacheShape = 'mustache',
-  NecklaceShape = 'necklace',
-  PantShape = 'pant',
-  ShoeShape = 'shoe',
   SoccerShape = 'soccer',
+  GedgetsShape = 'gedgets',
+  BeardShape = 'beard',
+  HairShape = 'hair',
+  CoatShape = 'coat',
+  BodyShape = 'body',
+  HeadpieceShape = 'headpiece',
+  FaceShape = 'face',
+  BagShape = 'bag',
+  NecklaceShape = 'necklace',
+  GlassesShape = 'glasses',
+  DressShape = 'dress',
   TshirtShape = 'tshirt',
+  ShoeShape = 'shoe',
+  PantShape = 'pant',
+  AccessibilityItemShape = 'accessibility-item',
 }
 
 /**
@@ -79,7 +79,7 @@ export enum GedgetsShape {
   itemD = 'item-D',
 }
 
-export enum GlassShape {
+export enum GlassesShape {
   itemA = 'item-A',
   itemB = 'item-B',
   itemC = 'item-C',
@@ -93,7 +93,7 @@ export enum HeadpieceShape {
   itemD = 'item-D',
 }
 
-export enum MustacheShape {
+export enum HairShape {
   itemA = 'item-A',
   itemB = 'item-B',
   itemC = 'item-C',
@@ -144,9 +144,9 @@ export type WidgetShape =
   | DressShape
   | FaceShape
   | GedgetsShape
-  | GlassShape
+  | GlassesShape
   | HeadpieceShape
-  | MustacheShape
+  | HairShape
   | NecklaceShape
   | PantShape
   | ShoeShape

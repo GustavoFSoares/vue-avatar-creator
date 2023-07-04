@@ -1,11 +1,15 @@
 <template>
   <section class="widget-list">
-    <WidgetListItem
+    <!--<WidgetListItem
       v-for="widgetType in avatarWidgets"
       :key="widgetType"
       :name="widgetType"
       :selected="widgetType === selectedItem"
-    />
+    />-->
+
+    <WidgetListItem name="beard" />
+    <WidgetListItem name="face" />
+    <WidgetListItem name="bag" />
   </section>
 </template>
 
@@ -34,5 +38,6 @@ const avatarWidgets = computed(() => AVATAR_WIDGETS);
 
   background: #fff;
   border-radius: 8px;
+  color: black;
 }
 </style>

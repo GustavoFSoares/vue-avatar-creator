@@ -8,9 +8,9 @@ import {
   DressShape,
   FaceShape,
   GedgetsShape,
-  GlassShape,
+  GlassesShape,
   HeadpieceShape,
-  MustacheShape,
+  HairShape,
   NecklaceShape,
   PantShape,
   ShoeShape,
@@ -47,13 +47,13 @@ export const AVATAR_LAYER: Readonly<{
   [WidgetType.GedgetsShape]: {
     zIndex: 0,
   },
-  [WidgetType.GlassShape]: {
+  [WidgetType.GlassesShape]: {
     zIndex: 0,
   },
   [WidgetType.HeadpieceShape]: {
     zIndex: 0,
   },
-  [WidgetType.MustacheShape]: {
+  [WidgetType.HairShape]: {
     zIndex: 0,
   },
   [WidgetType.NecklaceShape]: {
@@ -74,22 +74,22 @@ export const AVATAR_LAYER: Readonly<{
 };
 
 export const AVATAR_WIDGETS: Readonly<WidgetType[]> = [
-  WidgetType.AccessibilityItemShape,
-  WidgetType.BagShape,
-  WidgetType.BeardShape,
-  WidgetType.BodyShape,
-  WidgetType.CoatShape,
-  WidgetType.DressShape,
-  WidgetType.FaceShape,
-  WidgetType.GedgetsShape,
-  WidgetType.GlassShape,
-  WidgetType.HeadpieceShape,
-  WidgetType.MustacheShape,
-  WidgetType.NecklaceShape,
-  WidgetType.PantShape,
-  WidgetType.ShoeShape,
   WidgetType.SoccerShape,
+  WidgetType.GedgetsShape,
+  WidgetType.BeardShape,
+  WidgetType.HairShape,
+  WidgetType.CoatShape,
+  WidgetType.BodyShape,
+  WidgetType.HeadpieceShape,
+  WidgetType.FaceShape,
+  WidgetType.BagShape,
+  WidgetType.NecklaceShape,
+  WidgetType.GlassesShape,
+  WidgetType.DressShape,
   WidgetType.TshirtShape,
+  WidgetType.ShoeShape,
+  WidgetType.PantShape,
+  WidgetType.AccessibilityItemShape,
 ];
 
 console.log(AccessibilityItemShape);
@@ -103,9 +103,9 @@ export const AVATAR_OPTIONS: Readonly<AvatarOptions> = {
   [WidgetType.DressShape]: Object.values(DressShape),
   [WidgetType.FaceShape]: Object.values(FaceShape),
   [WidgetType.GedgetsShape]: Object.values(GedgetsShape),
-  [WidgetType.GlassShape]: Object.values(GlassShape),
+  [WidgetType.GlassesShape]: Object.values(GlassesShape),
   [WidgetType.HeadpieceShape]: Object.values(HeadpieceShape),
-  [WidgetType.MustacheShape]: Object.values(MustacheShape),
+  [WidgetType.HairShape]: Object.values(HairShape),
   [WidgetType.NecklaceShape]: Object.values(NecklaceShape),
   [WidgetType.PantShape]: Object.values(PantShape),
   [WidgetType.ShoeShape]: Object.values(ShoeShape),

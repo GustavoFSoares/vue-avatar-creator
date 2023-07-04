@@ -7,9 +7,9 @@ import {
   type DressShape,
   type FaceShape,
   type GedgetsShape,
-  type GlassShape,
+  type GlassesShape,
   type HeadpieceShape,
-  type MustacheShape,
+  type HairShape,
   type NecklaceShape,
   type PantShape,
   type ShoeShape,
@@ -33,9 +33,9 @@ export type AvatarWidgets = {
   dress: IWidget<DressShape>;
   face: IWidget<FaceShape>;
   gedgets: IWidget<GedgetsShape>;
-  glass: IWidget<GlassShape>;
+  glasses: IWidget<GlassesShape>;
   headpiece: IWidget<HeadpieceShape>;
-  mustache: IWidget<MustacheShape>;
+  hair: IWidget<HairShape>;
   necklace: IWidget<NecklaceShape>;
   pant: IWidget<PantShape>;
   shoe: IWidget<ShoeShape>;
@@ -52,9 +52,9 @@ export type AvatarWidgets = {
 //   dress: DressShape
 //   face: FaceShape
 //   gedgets: GedgetsShape
-//   glass: GlassShape
+//   glasses: GlassesShape
 //   headpiece: HeadpieceShape
-//   mustache: MustacheShape
+//   hair: HairShape
 //   necklace: NecklaceShape
 //   pant: PantShape
 //   shoe: ShoeShape
@@ -71,9 +71,9 @@ export type AvatarOptions = {
   dress: string[];
   face: string[];
   gedgets: string[];
-  glass: string[];
+  glasses: string[];
   headpiece: string[];
-  mustache: string[];
+  hair: string[];
   necklace: string[];
   pant: string[];
   shoe: string[];
