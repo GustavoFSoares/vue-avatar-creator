@@ -10,6 +10,11 @@
               v-model="selectedWidget"
               :container-width="containerWidth"
             />
+
+            <WidgetOptionList
+              v-if="selectedWidget"
+              :current-widget="selectedWidget"
+            />
           </section>
         </main>
       </div>
@@ -20,6 +25,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import WidgetList from './components/WidgetList/index.vue';
+import WidgetOptionList from './components/WidgetOptionList/index.vue';
 
 const avatarSelectorRef = ref(null);
 const selectedWidget = ref(null);
@@ -73,6 +79,10 @@ onMounted(() => {
   .avatar-selector {
     width: 100%;
     flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
   }
 }
 </style>

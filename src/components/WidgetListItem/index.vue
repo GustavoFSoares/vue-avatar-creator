@@ -1,11 +1,11 @@
 '
 <template>
-  <section
+  <div
     :class="['widget-list-item', { 'widget-list-item--selected': selected }]"
     @click="handleClick"
   >
     <img :key="name" :src="`/widget-options/${name}.png`" />
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">

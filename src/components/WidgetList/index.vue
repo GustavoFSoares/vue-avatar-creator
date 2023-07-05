@@ -3,11 +3,7 @@
     class="widget-list"
     :style="[{ '--container-width': `${containerWidth}px` }]"
   >
-    <swiper
-      :slides-per-view="slidesPerView"
-      :space-between="5"
-      :modules="modules"
-    >
+    <swiper :slides-per-view="slidesPerView" :space-between="5">
       <swiper-slide
         v-for="widget in avatarWidgets"
         :key="widget"
