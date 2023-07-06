@@ -92,8 +92,6 @@ export const AVATAR_WIDGETS: Readonly<WidgetType[]> = [
   WidgetType.AccessibilityItemShape,
 ];
 
-console.log(AccessibilityItemShape);
-
 export const AVATAR_OPTIONS: Readonly<AvatarOptions> = {
   [WidgetType.AccessibilityItemShape]: Object.values(AccessibilityItemShape),
   [WidgetType.BagShape]: Object.values(BagShape),
@@ -230,6 +228,56 @@ export const TRIGGER_PROBABILITY = 0.1;
 //     },
 //   },
 // ]
+
+export const COLOR_OPTIONS = [
+  '#0E202D',
+  '#FFFFFF',
+  '#CD95D6',
+  '#B96BC6',
+  '#9B2FAE',
+  '#692398',
+  '#9FA9D8',
+  '#7A88C9',
+  '#4054B2',
+  '#293891',
+  '#84D4F8',
+  '#55C4F5',
+  '#1DAAF1',
+  '#1278BB',
+  '#83CBC4',
+  '#52B6AC',
+  '#159588',
+  '#0B695C',
+  '#A6D5A9',
+  '#83C686',
+  '#50AE54',
+  '#317C36',
+  '#FFF4A2',
+  '#FEF07E',
+  '#FEE94E',
+  '#F7A738',
+  '#FECB85',
+  '#FDB657',
+  '#FD9726',
+  '#ED6C1F',
+  '#F290B1',
+  '#EE6492',
+  '#E62465',
+  '#AB1A57',
+  '#ED9A9B',
+  '#E37475',
+  '#F1453D',
+  '#C42A2E',
+  '#BDA198',
+  '#A37F73',
+  '#7F3F3D',
+  '#5B2F2F',
+  '#CFD8DC',
+  '#91A4AD',
+  '#617D8A',
+  '#465A63',
+  '#37474F',
+];
 
 export const NOT_COMPATIBLE_AGENTS = [
   'quark',

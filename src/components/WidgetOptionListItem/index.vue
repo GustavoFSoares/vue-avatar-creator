@@ -7,7 +7,13 @@
     ]"
     @click="handleClick"
   >
-    <figure>{{ item }}</figure>
+    <img
+      v-if="alowwed"
+      :src="`/widget-options/${widgetGroup}/${item}.png`"
+      class="widget-option-list-item__figure"
+    />
+
+    <div v-else>{{ item }}</div>
 
     <div class="widget-option-list-item__action-button">
       <span
@@ -28,8 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch, ref, onMounted } from 'vue';
-import { AVATAR_OPTIONS } from '@/utils/constant.ts';
+import { computed } from 'vue';
 
 const $emit = defineEmits(['add', 'remove', 'select']);
 const props = defineProps({
@@ -51,7 +56,9 @@ const props = defineProps({
   },
 });
 
-const avatarOptions = computed(() => AVATAR_OPTIONS[props.currentWidget]);
+const ALLOWED_OPTIONS = ['beard', 'hair'];
+
+const alowwed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
 
 const handleAction = () => {
   if (props.used) {
@@ -100,6 +107,11 @@ const handleClick = () => {
     border: 1px solid #22d2b3;
     box-sizing: border-box;
     box-shadow: 0 4px 8px #00000040;
+  }
+
+  &__figure {
+    max-width: 70px;
+    max-height: 70px;
   }
 
   &__action-button {

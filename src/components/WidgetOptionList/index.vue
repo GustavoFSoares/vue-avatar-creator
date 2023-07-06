@@ -13,12 +13,27 @@
         @select="handleSelect(optionItem)"
       />
     </div>
+
+    <div v-if="showColorPalette" class="widget-option-list__color-palette">
+      <button
+        v-for="colorOption in COLOR_OPTIONS"
+        :key="colorOption"
+        :class="[
+          'widget-option-list__color-palette-item',
+          `widget-option-list__color-palette-item--${colorOption.replace(
+            '#',
+            ''
+          )}`,
+        ]"
+        :style="`background-color: ${colorOption}`"
+      />
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { computed, watch, ref, onMounted } from 'vue';
-import { AVATAR_OPTIONS } from '@/utils/constant.ts';
+import { AVATAR_OPTIONS, COLOR_OPTIONS } from '@/utils/constant.ts';
 
 import WidgetOptionListItem from '../WidgetOptionListItem/index.vue';
 
@@ -31,11 +46,13 @@ const props = defineProps({
 
 const usedOptions = ref([]);
 const selectedOption = ref(null);
+const showColorPalette = ref(false);
 
 const avatarOptions = computed(() => AVATAR_OPTIONS[props.currentWidget]);
 
 const handleAddItem = (item) => {
   usedOptions.value.push(item);
+  handleShowColorPalette(item);
 };
 
 const handleRemoveItem = (item) => {
@@ -46,10 +63,12 @@ const handleRemoveItem = (item) => {
   }
 
   usedOptions.value.splice(selectedIndex, 1);
+  handleHideColorPalette();
 };
 
 const handleSelect = (item) => {
   selectedOption.value = item;
+  handleShowColorPalette(item);
 };
 
 const getSelectedOptions = () => {
@@ -57,10 +76,22 @@ const getSelectedOptions = () => {
   usedOptions.value = [];
 };
 
+const handleShowColorPalette = (item) => {
+  if (usedOptions.value.includes(item)) {
+    showColorPalette.value = true;
+  } else {
+    handleHideColorPalette();
+  }
+};
+const handleHideColorPalette = () => {
+  showColorPalette.value = false;
+};
+
 watch(
   () => props.currentWidget,
   (val) => {
     getSelectedOptions();
+    handleHideColorPalette();
   },
   { immediate: true }
 );
@@ -73,12 +104,57 @@ watch(
   display: flex;
   color: black;
 
-  padding: 16px 24px;
+  padding: 16px 24px 68px;
+
+  position: relative;
 
   &__options {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+  }
+
+  &__color-palette {
+    position: absolute;
+    top: 85%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+
+    padding: 10px;
+
+    background-color: #fff;
+    display: flex;
+    max-width: 680px;
+    padding: 16px;
+    border: 1px solid #e0e5e9;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #00000040;
+    z-index: 99;
+    overflow: initial;
+    margin: auto;
+
+    &-item {
+      border: none;
+      width: 24px;
+      height: 24px;
+      max-width: 24px;
+      max-height: 24px;
+      border-radius: 24px;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      padding: initial;
+      cursor: pointer;
+
+      &--FFFFFF {
+        border: 1px #83949d solid;
+      }
+    }
   }
 }
 </style>

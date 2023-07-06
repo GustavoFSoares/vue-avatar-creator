@@ -50,7 +50,7 @@ const handleClick = () => {
     border: 1px solid #f5f7f8;
     box-sizing: border-box;
     box-shadow: 0 4px 8px #6923984d;
-    cursor: none;
+    cursor: initial;
   }
 
   img {

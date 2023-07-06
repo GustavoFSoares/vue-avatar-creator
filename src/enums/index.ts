@@ -38,10 +38,12 @@ export enum BagShape {
 }
 
 export enum BeardShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  item1 = '1',
+  item2 = '2',
+  item3 = '3',
+  item4 = '4',
+  item5 = '5',
+  item6 = '6',
 }
 
 export enum BodyShape {
@@ -94,10 +96,12 @@ export enum HeadpieceShape {
 }
 
 export enum HairShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  item1 = '1',
+  item2 = '2',
+  item3 = '3',
+  item4 = '4',
+  item5 = '5',
+  item6 = '6',
 }
 
 export enum NecklaceShape {
