@@ -20,6 +20,7 @@
         :key="colorOption"
         :class="[
           'widget-option-list__color-palette-item',
+          { 'widget-option-list__color-palette-item--selected': false },
           `widget-option-list__color-palette-item--${colorOption.replace(
             '#',
             ''
@@ -151,8 +152,37 @@ watch(
       padding: initial;
       cursor: pointer;
 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       &--FFFFFF {
         border: 1px #83949d solid;
+      }
+
+      &--selected {
+        border: 2px solid black;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          max-width: 10px;
+          max-height: 10px;
+          border: 1px solid black;
+          background-color: #000;
+          border-radius: 10px;
+        }
+      }
+
+      &--0E202D {
+        border-color: #fff;
+
+        &::before {
+          background-color: #fff;
+        }
       }
     }
   }
