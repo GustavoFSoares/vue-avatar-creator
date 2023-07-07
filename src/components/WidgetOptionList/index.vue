@@ -33,8 +33,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch, ref, onMounted } from 'vue';
-import { AVATAR_OPTIONS, COLOR_OPTIONS } from '@/utils/constant.ts';
+import { computed, watch, ref } from 'vue';
+import {
+  AVATAR_OPTIONS,
+  COLOR_OPTIONS,
+  AVATAR_SPECIFICATION,
+} from '@/utils/constant.ts';
 
 import WidgetOptionListItem from '../WidgetOptionListItem/index.vue';
 
@@ -50,6 +54,9 @@ const selectedOption = ref(null);
 const showColorPalette = ref(false);
 
 const avatarOptions = computed(() => AVATAR_OPTIONS[props.currentWidget]);
+const allowMultipleItems = computed(
+  () => AVATAR_SPECIFICATION[props.currentWidget].allowMultiple
+);
 
 const handleAddItem = (item) => {
   usedOptions.value.push(item);

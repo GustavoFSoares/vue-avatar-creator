@@ -20,56 +20,76 @@ import {
 } from '../enums';
 // import type { AvatarOption, AvatarSettings } from '../types'
 
-export const AVATAR_LAYER: Readonly<{
-  [key in `${WidgetType}`]: { zIndex: number };
+interface AvatarSpecification {
+  zIndex: number;
+  allowMultiple: boolean;
+}
+export const AVATAR_SPECIFICATION: Readonly<{
+  [key in `${WidgetType}`]: AvatarSpecification;
 }> = {
   [WidgetType.AccessibilityItemShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.BagShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.BeardShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.BodyShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.CoatShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.DressShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.FaceShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.GedgetsShape]: {
     zIndex: 0,
+    allowMultiple: true,
   },
   [WidgetType.GlassesShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.HeadpieceShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.HairShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.NecklaceShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.PantShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.ShoeShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
   [WidgetType.SoccerShape]: {
     zIndex: 0,
+    allowMultiple: true,
   },
   [WidgetType.TshirtShape]: {
     zIndex: 0,
+    allowMultiple: false,
   },
 };
 
