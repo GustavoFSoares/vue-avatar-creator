@@ -34,6 +34,9 @@
 
 <script setup lang="ts">
 import { computed, watch, ref } from 'vue';
+
+import { useAvatarStore } from '@/stores/avatar.ts';
+
 import {
   AVATAR_OPTIONS,
   COLOR_OPTIONS,
@@ -49,6 +52,8 @@ const props = defineProps({
   },
 });
 
+const avatarStore = useAvatarStore();
+
 const usedOptions = ref([]);
 const selectedOption = ref(null);
 const showColorPalette = ref(false);
@@ -59,7 +64,7 @@ const allowMultipleItems = computed(
 );
 
 const handleAddItem = (item) => {
-  usedOptions.value.push(item);
+  avatarStore.addWidget(props.currentWidget, item);
   handleShowColorPalette(item);
 };
 
