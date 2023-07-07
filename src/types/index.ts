@@ -18,7 +18,7 @@ import {
 } from '../enums';
 
 export interface IWidget<Shape> {
-  shape: Shape;
+  shape: Shape | string;
   zIndex?: number;
   fillColor: string;
   strokeColor?: string;
@@ -32,14 +32,14 @@ export type AvatarWidgets = {
   coat: IWidget<CoatShape>;
   dress: IWidget<DressShape>;
   face: IWidget<FaceShape>;
-  gedgets: IWidget<GedgetsShape>;
+  gedgets: IWidget<GedgetsShape>[];
   glasses: IWidget<GlassesShape>;
   headpiece: IWidget<HeadpieceShape>;
   hair: IWidget<HairShape>;
   necklace: IWidget<NecklaceShape>;
   pant: IWidget<PantShape>;
   shoe: IWidget<ShoeShape>;
-  soccer: IWidget<SoccerShape>;
+  soccer: IWidget<SoccerShape>[];
   tshirt: IWidget<TshirtShape>;
 };
 
