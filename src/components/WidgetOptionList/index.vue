@@ -2,15 +2,15 @@
   <section class="widget-option-list">
     <div class="widget-option-list__options">
       <WidgetOptionListItem
-        v-for="optionItem in [...avatarOptions, ...avatarOptions]"
-        :key="optionItem"
-        :item="optionItem"
+        v-for="(widgetOption, widgetOptionIndex) in avatarOptions"
+        :key="widgetOption.item"
+        :item="widgetOption.item"
         :widget-group="currentWidget"
-        :selected="selectedOption === optionItem"
-        :used="usedOptions.includes(optionItem)"
-        @add="handleAddItem(optionItem)"
-        @remove="handleRemoveItem(optionItem)"
-        @select="handleSelect(optionItem)"
+        :selected="selectedOption === widgetOption.item"
+        :used="widgetOption.selected"
+        @add="handleAddItem(widgetOption.item, widgetOptionIndex)"
+        @remove="handleRemoveItem(widgetOption.item, widgetOptionIndex)"
+        @select="handleSelect(widgetOption.item)"
       />
     </div>
 
@@ -58,24 +58,29 @@ const usedOptions = ref([]);
 const selectedOption = ref(null);
 const showColorPalette = ref(false);
 
-const avatarOptions = computed(() => AVATAR_OPTIONS[props.currentWidget]);
+const avatarOptions = ref<{ item: string; selected: boolean }[]>([]);
 const allowMultipleItems = computed(
   () => AVATAR_SPECIFICATION[props.currentWidget].allowMultiple
 );
 
-const handleAddItem = (item) => {
+const handleAddItem = (item: string, index: number) => {
   avatarStore.addWidget(props.currentWidget, item);
+
+  if (!allowMultipleItems.value) {
+    avatarOptions.value.forEach((avatarOption) => {
+      avatarOption.selected = false;
+    });
+  }
+
+  avatarOptions.value[index].selected = true;
+
   handleShowColorPalette(item);
 };
 
-const handleRemoveItem = (item) => {
-  const selectedIndex = usedOptions.value.indexOf(item);
-  if (selectedIndex === -1) {
-    console.error(`item "${item}" not found`);
-    return;
-  }
+const handleRemoveItem = (item: string, index: number) => {
+  avatarStore.removeWidget(props.currentWidget, item);
+  avatarOptions.value[index].selected = false;
 
-  usedOptions.value.splice(selectedIndex, 1);
   handleHideColorPalette();
 };
 
@@ -85,8 +90,38 @@ const handleSelect = (item) => {
 };
 
 const getSelectedOptions = () => {
+  avatarOptions.value = AVATAR_OPTIONS[props.currentWidget].map(
+    (widgetItem) => ({
+      item: widgetItem,
+      selected: false,
+    })
+  );
+
   selectedOption.value = null;
-  usedOptions.value = [];
+
+  if (!avatarStore.avatarConfiguration[props.currentWidget]) {
+    return;
+  }
+
+  if (allowMultipleItems.value) {
+    avatarStore.avatarConfiguration[props.currentWidget].forEach(
+      (configurationItem) => {
+        const currentOption = avatarOptions.value.find(
+          (optionItem) => optionItem.item === configurationItem.shape
+        );
+
+        currentOption.selected = true;
+      }
+    );
+  } else {
+    const currentOption = avatarOptions.value.find(
+      (optionItem) =>
+        optionItem.item ==
+        avatarStore.avatarConfiguration[props.currentWidget].shape
+    );
+
+    currentOption.selected = true;
+  }
 };
 
 const handleShowColorPalette = (item) => {

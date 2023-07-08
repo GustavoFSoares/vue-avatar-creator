@@ -9,22 +9,34 @@ export const useAvatarStore = defineStore({
   id: 'avatar',
   state: () => ({
     avatarConfiguration: {
-      'accessibility-item': {},
-      bag: {},
-      beard: {},
-      body: {},
-      coat: {},
-      dress: {},
-      face: {},
-      gedgets: [] as IWidget<GedgetsShape>[],
-      glasses: {},
-      headpiece: {},
-      hair: {},
-      necklace: {},
-      pant: {},
-      shoe: {},
+      'accessibility-item': null,
+      bag: null,
+      beard: null,
+      body: {
+        shape: 'item-A',
+        fillColor: '#000',
+      },
+      coat: null,
+      dress: null,
+      face: null,
+      gedgets: [
+        {
+          shape: 'item-A',
+          fillColor: '#000',
+        },
+        {
+          shape: 'item-B',
+          fillColor: '#000',
+        },
+      ] as IWidget<GedgetsShape>[],
+      glasses: null,
+      headpiece: null,
+      hair: null,
+      necklace: null,
+      pant: null,
+      shoe: null,
       soccer: [] as IWidget<SoccerShape>[],
-      tshirt: {},
+      tshirt: null,
     } as AvatarWidgets,
   }),
   getters: {
@@ -41,8 +53,8 @@ export const useAvatarStore = defineStore({
   },
   actions: {
     addWidget(item: WidgetType, shape: string) {
-      if (!this.avatarConfiguration[item]) {
-        throw new Error(`Error trying find item "${item}"`);
+      if (this.avatarConfiguration[item] === undefined) {
+        throw new Error(`Error trying add item "${item}"`);
       }
 
       const [firstColor] = COLOR_OPTIONS;
@@ -58,6 +70,27 @@ export const useAvatarStore = defineStore({
 
       if (item !== 'soccer' && item !== 'gedgets') {
         this.avatarConfiguration[item] = widgetData;
+      }
+
+      console.log(this.avatarConfiguration);
+    },
+    removeWidget(item: WidgetType, shape: string) {
+      if (!this.avatarConfiguration[item]) {
+        throw new Error(`Error trying remove item "${item}"`);
+      }
+
+      if (item === 'soccer' || item === 'gedgets') {
+        const avatarItemIndex = this.avatarConfiguration[item].findIndex(
+          (avatarItem) => avatarItem.shape === shape
+        );
+
+        if (avatarItemIndex !== -1) {
+          this.avatarConfiguration[item].splice(avatarItemIndex, 1);
+        }
+      }
+
+      if (item !== 'soccer' && item !== 'gedgets') {
+        this.avatarConfiguration[item] = null;
       }
 
       console.log(this.avatarConfiguration);
@@ -78,7 +111,10 @@ export const useAvatarStore = defineStore({
       }
 
       if (item !== 'soccer' && item !== 'gedgets') {
-        this.avatarConfiguration[item].fillColor = color;
+        const currentWidget = this.avatarConfiguration[item];
+        if (currentWidget) {
+          currentWidget.fillColor = color;
+        }
       }
 
       console.log(this.avatarConfiguration[item]);

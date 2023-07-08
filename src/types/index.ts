@@ -25,22 +25,22 @@ export interface IWidget<Shape> {
 }
 
 export type AvatarWidgets = {
-  'accessibility-item': IWidget<AccessibilityItemShape>;
-  bag: IWidget<BagShape>;
-  beard: IWidget<BeardShape>;
-  body: IWidget<BodyShape>;
-  coat: IWidget<CoatShape>;
-  dress: IWidget<DressShape>;
-  face: IWidget<FaceShape>;
+  'accessibility-item': IWidget<AccessibilityItemShape> | null;
+  bag: IWidget<BagShape> | null;
+  beard: IWidget<BeardShape> | null;
+  body: IWidget<BodyShape> | null;
+  coat: IWidget<CoatShape> | null;
+  dress: IWidget<DressShape> | null;
+  face: IWidget<FaceShape> | null;
   gedgets: IWidget<GedgetsShape>[];
-  glasses: IWidget<GlassesShape>;
-  headpiece: IWidget<HeadpieceShape>;
-  hair: IWidget<HairShape>;
-  necklace: IWidget<NecklaceShape>;
-  pant: IWidget<PantShape>;
-  shoe: IWidget<ShoeShape>;
+  glasses: IWidget<GlassesShape> | null;
+  headpiece: IWidget<HeadpieceShape> | null;
+  hair: IWidget<HairShape> | null;
+  necklace: IWidget<NecklaceShape> | null;
+  pant: IWidget<PantShape> | null;
+  shoe: IWidget<ShoeShape> | null;
   soccer: IWidget<SoccerShape>[];
-  tshirt: IWidget<TshirtShape>;
+  tshirt: IWidget<TshirtShape> | null;
 };
 
 // export type AvatarOptions = {
