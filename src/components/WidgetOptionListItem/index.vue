@@ -1,5 +1,6 @@
 <template>
   <button
+    :id="`option-${widgetGroup}-${item}`"
     :class="[
       'widget-option-list-item',
       { 'widget-option-list-item--used': used },
@@ -7,11 +8,9 @@
     ]"
     @click="handleClick"
   >
-    <img
-      v-if="alowwed"
-      :src="`/widget-options/${widgetGroup}/${item}.png`"
-      class="widget-option-list-item__figure"
-    />
+    <div v-if="alowed" class="widget-option-list-item__figure">
+      <div v-html="svgData" />
+    </div>
 
     <div v-else>{{ item }}</div>
 
@@ -34,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 
 const $emit = defineEmits(['add', 'remove', 'select']);
 const props = defineProps({
@@ -55,10 +54,11 @@ const props = defineProps({
     default: false,
   },
 });
+const svgData = ref(null);
 
 const ALLOWED_OPTIONS = ['beard', 'hair'];
 
-const alowwed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
+const alowed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
 
 const handleAction = () => {
   if (props.used) {
@@ -77,6 +77,16 @@ const handleClick = () => {
 
   $emit('select');
 };
+
+onMounted(async () => {
+  if (alowed.value) {
+    const svgContent = await import(
+      `/public/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
+    );
+
+    svgData.value = svgContent.default;
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -110,8 +120,16 @@ const handleClick = () => {
   }
 
   &__figure {
-    max-width: 70px;
-    max-height: 70px;
+    max-width: 80px;
+    max-height: 80px;
+
+    display: flex;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__action-button {
