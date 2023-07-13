@@ -97,10 +97,16 @@ export enum GlassesShape {
 }
 
 export enum HeadpieceShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  headpiece1 = 'headpiece-1',
+  headpiece2 = 'headpiece-2',
+  headpiece3 = 'headpiece-3',
+  headpiece4 = 'headpiece-4',
+  headpiece5 = 'headpiece-5',
+  headpiece6 = 'headpiece-6',
+  headpiece7 = 'headpiece-7',
+  headpiece8 = 'headpiece-8',
+  headpiece9 = 'headpiece-9',
+  headpiece10 = 'headpiece-10',
 }
 
 export enum HairShape {
