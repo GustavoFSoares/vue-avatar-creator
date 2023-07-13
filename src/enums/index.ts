@@ -84,10 +84,16 @@ export enum GedgetsShape {
 }
 
 export enum GlassesShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  glasses1 = 'glasses-1',
+  glasses2 = 'glasses-2',
+  glasses3 = 'glasses-3',
+  glasses4 = 'glasses-4',
+  glasses5 = 'glasses-5',
+  glasses6 = 'glasses-6',
+  glasses7 = 'glasses-7',
+  glasses8 = 'glasses-8',
+  glasses9 = 'glasses-9',
+  glasses10 = 'glasses-10',
 }
 
 export enum HeadpieceShape {
