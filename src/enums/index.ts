@@ -148,10 +148,13 @@ export enum ShoeShape {
 }
 
 export enum SoccerShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  soccer1 = 'soccer-1',
+  soccer2 = 'soccer-2',
+  soccer3 = 'soccer-3',
+  soccer4 = 'soccer-4',
+  soccer5 = 'soccer-5',
+  soccer6 = 'soccer-6',
+  soccer7 = 'soccer-7',
 }
 
 export enum TshirtShape {

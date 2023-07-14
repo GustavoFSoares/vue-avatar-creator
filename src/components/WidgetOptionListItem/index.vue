@@ -63,6 +63,7 @@ const ALLOWED_OPTIONS = [
   'headpiece',
   'gedgets',
   'accessibility-item',
+  'soccer',
 ];
 
 const alowed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
