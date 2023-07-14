@@ -46,10 +46,11 @@ export enum BeardShape {
 }
 
 export enum BodyShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  body1 = 'body-1',
+  body2 = 'body-2',
+  body3 = 'body-3',
+  body4 = 'body-4',
+  body5 = 'body-5',
 }
 
 export enum CoatShape {

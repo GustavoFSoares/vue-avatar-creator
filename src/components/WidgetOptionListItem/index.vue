@@ -64,6 +64,7 @@ const ALLOWED_OPTIONS = [
   'gedgets',
   'accessibility-item',
   'soccer',
+  'body',
 ];
 
 const alowed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
@@ -134,9 +135,8 @@ onMounted(async () => {
     display: flex;
     justify-content: center;
 
-    svg {
-      width: 100%;
-      height: 100%;
+    :deep(svg) {
+      max-height: 100px;
     }
   }
 
