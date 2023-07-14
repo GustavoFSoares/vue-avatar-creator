@@ -24,10 +24,7 @@ export enum WidgetType {
  */
 
 export enum AccessibilityItemShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  AccessibilityItem1 = 'accessibility-item-1',
 }
 
 export enum BagShape {
@@ -77,10 +74,14 @@ export enum FaceShape {
 }
 
 export enum GedgetsShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  gedgets1 = 'gedgets-1',
+  gedgets2 = 'gedgets-2',
+  gedgets3 = 'gedgets-3',
+  gedgets4 = 'gedgets-4',
+  gedgets5 = 'gedgets-5',
+  gedgets6 = 'gedgets-6',
+  gedgets7 = 'gedgets-7',
+  gedgets8 = 'gedgets-8',
 }
 
 export enum GlassesShape {

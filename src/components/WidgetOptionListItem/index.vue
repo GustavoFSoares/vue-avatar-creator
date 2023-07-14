@@ -56,7 +56,14 @@ const props = defineProps({
 });
 const svgData = ref(null);
 
-const ALLOWED_OPTIONS = ['beard', 'hair', 'glasses', 'headpiece'];
+const ALLOWED_OPTIONS = [
+  'beard',
+  'hair',
+  'glasses',
+  'headpiece',
+  'gedgets',
+  'accessibility-item',
+];
 
 const alowed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
 

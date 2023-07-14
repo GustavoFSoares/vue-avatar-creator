@@ -12,23 +12,11 @@ export const useAvatarStore = defineStore({
       'accessibility-item': null,
       bag: null,
       beard: null,
-      body: {
-        shape: 'item-A',
-        fillColor: '#000',
-      },
+      body: null,
       coat: null,
       dress: null,
       face: null,
-      gedgets: [
-        {
-          shape: 'item-A',
-          fillColor: '#000',
-        },
-        {
-          shape: 'item-B',
-          fillColor: '#000',
-        },
-      ] as IWidget<GedgetsShape>[],
+      gedgets: [] as IWidget<GedgetsShape>[],
       glasses: null,
       headpiece: null,
       hair: null,
