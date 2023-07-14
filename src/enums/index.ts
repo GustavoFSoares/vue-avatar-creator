@@ -68,10 +68,14 @@ export enum DressShape {
 }
 
 export enum FaceShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
+  face1 = 'face-1',
+  face2 = 'face-2',
+  face3 = 'face-3',
+  face4 = 'face-4',
+  face5 = 'face-5',
+  face6 = 'face-6',
+  face7 = 'face-7',
+  face8 = 'face-8',
 }
 
 export enum GedgetsShape {
