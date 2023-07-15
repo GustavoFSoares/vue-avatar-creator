@@ -62,6 +62,9 @@ const avatarOptions = ref<{ item: string; selected: boolean }[]>([]);
 const allowMultipleItems = computed(
   () => AVATAR_SPECIFICATION[props.currentWidget].allowMultiple
 );
+const itemByBody = computed(
+  () => AVATAR_SPECIFICATION[props.currentWidget].byBody
+);
 
 const handleAddItem = (item: string, index: number) => {
   avatarStore.addWidget(props.currentWidget, item);
@@ -90,12 +93,26 @@ const handleSelect = (item) => {
 };
 
 const getSelectedOptions = () => {
-  avatarOptions.value = AVATAR_OPTIONS[props.currentWidget].map(
+  let avatarOptionsList = AVATAR_OPTIONS[props.currentWidget].map(
     (widgetItem) => ({
       item: widgetItem,
       selected: false,
     })
   );
+
+  if (itemByBody.value) {
+    const genericItems = avatarOptionsList.filter(
+      (optionItem) => !optionItem.item.includes('--')
+    );
+
+    const byBodyItems = avatarOptionsList.filter((optionItem) =>
+      optionItem.item.includes(avatarStore.bodyShape)
+    );
+
+    avatarOptionsList = [...byBodyItems, ...genericItems];
+  }
+
+  avatarOptions.value = avatarOptionsList;
 
   selectedOption.value = null;
 

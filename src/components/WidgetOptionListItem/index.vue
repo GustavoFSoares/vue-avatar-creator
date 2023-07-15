@@ -8,7 +8,7 @@
     ]"
     @click="handleClick"
   >
-    <div v-if="alowed" class="widget-option-list-item__figure">
+    <div v-if="svgData" class="widget-option-list-item__figure">
       <div v-html="svgData" />
     </div>
 
@@ -56,20 +56,6 @@ const props = defineProps({
 });
 const svgData = ref(null);
 
-const ALLOWED_OPTIONS = [
-  'beard',
-  'hair',
-  'glasses',
-  'headpiece',
-  'gedgets',
-  'accessibility-item',
-  'soccer',
-  'body',
-  'face',
-];
-
-const alowed = computed(() => ALLOWED_OPTIONS.includes(props.widgetGroup));
-
 const handleAction = () => {
   if (props.used) {
     $emit('remove');
@@ -89,13 +75,11 @@ const handleClick = () => {
 };
 
 onMounted(async () => {
-  if (alowed.value) {
-    const svgContent = await import(
-      `/public/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
-    );
+  const svgContent = await import(
+    `/public/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
+  );
 
-    svgData.value = svgContent.default;
-  }
+  svgData.value = svgContent.default;
 });
 </script>
 

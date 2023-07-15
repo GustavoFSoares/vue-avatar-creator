@@ -12,22 +12,33 @@ export const useAvatarStore = defineStore({
       'accessibility-item': null,
       bag: null,
       beard: null,
-      body: null,
+      body: {
+        shape: 'body-1',
+      },
       coat: null,
       dress: null,
       face: null,
-      gedgets: [] as IWidget<GedgetsShape>[],
+      gedgets: [] as IWidget<typeof GedgetsShape>[],
       glasses: null,
       headpiece: null,
       hair: null,
       necklace: null,
       pant: null,
       shoe: null,
-      soccer: [] as IWidget<SoccerShape>[],
+      soccer: [] as IWidget<typeof SoccerShape>[],
       tshirt: null,
     } as AvatarWidgets,
   }),
   getters: {
+    bodyShape(state): string {
+      const { body } = state.avatarConfiguration;
+
+      if (!body) {
+        throw new Error('Body not found');
+      }
+
+      return body.shape;
+    },
     // items: (state): Array<{ name: string; amount: number }> =>
     //   state.rawItems.reduce((items, item) => {
     //     const existingItem = items.find((it) => it.name === item);
