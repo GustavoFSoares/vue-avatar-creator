@@ -1,47 +1,91 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-import TheWelcome from './components/TheWelcome.vue';
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app-container">
+    <div class="app-container__wrapper">
+      <div class="app-container__content">
+        <main class="main-page">
+          <aside class="avatar-preview">
+            <AvatarPreview />
+          </aside>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+          <section ref="avatarSelectorRef" class="avatar-selector">
+            <WidgetList
+              v-model="selectedWidget"
+              :container-width="containerWidth"
+            />
+
+            <WidgetOptionList
+              v-if="selectedWidget"
+              :current-widget="selectedWidget"
+            />
+          </section>
+        </main>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import AvatarPreview from './components/AvatarPreview/index.vue';
+import WidgetList from './components/WidgetList/index.vue';
+import WidgetOptionList from './components/WidgetOptionList/index.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const avatarSelectorRef = ref(null);
+const selectedWidget = ref(null);
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+const containerWidth: number = ref(320);
+
+const getContainerWidth = () => {
+  containerWidth.value = avatarSelectorRef.value.clientWidth;
+};
+
+onMounted(() => {
+  getContainerWidth();
+
+  window.addEventListener('resize', () => {
+    getContainerWidth();
+  });
+});
+</script>
+
+<style lang="scss" scoped>
+.app-container {
+  width: 100vw;
+  height: 100vh;
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  &__content {
+    max-width: 1366px;
+    margin: 0 auto;
+  }
+}
+
+.main-page {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+
+  display: flex;
+  gap: 35px;
+
+  .avatar-preview {
+    min-width: 305px;
+    min-height: 300px;
+    max-width: 305px;
   }
 
-  header .wrapper {
+  .avatar-selector {
+    width: 100%;
+    flex-grow: 1;
+
     display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 25px;
   }
 }
 </style>

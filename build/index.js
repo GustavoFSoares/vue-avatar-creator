@@ -1,8 +1,6 @@
-import HelloWorld from '@/components/HelloWorld.vue';
-import TheWelcome from '@/components/TheWelcome.vue';
+export { default as HelloWorld} from '@/components/HelloWorld.vue';
+export { default as TheWelcome} from '@/components/TheWelcome.vue';
 
-export const HelloWorldComponent = HelloWorld;
-export const TheWelcomeComponent = TheWelcome;
 export const defaultAvatar = {
   widgets: {
     ear: { shape: 'detached' },
