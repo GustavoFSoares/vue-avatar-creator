@@ -1,3 +1,27 @@
+const getSpritesList = (sprites: any): any => {
+  try {
+    type A = keyof typeof sprites;
+
+    const SpritesObject: Record<A, A> = {};
+    for (const spritePath in sprites) {
+      let spriteName = spritePath.split('/').pop();
+      if (!spriteName) {
+        console.error('Folder is empty');
+        return {};
+      }
+
+      spriteName = spriteName.replace('.svg', '');
+      const spriteKey = spriteName.replaceAll('-', '_');
+
+      SpritesObject[spriteKey] = spriteName;
+    }
+
+    return SpritesObject;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export enum WidgetType {
   SoccerShape = 'soccer',
   GedgetsShape = 'gedgets',
@@ -23,166 +47,116 @@ export enum WidgetType {
  * All enumeration values of `WidgetShape` correspond to the file name.
  */
 
-export enum AccessibilityItemShape {
-  AccessibilityItem1 = 'accessibility-item-1',
-}
+// ============ accessibility-item
+const accessibilityItemSprites = import.meta.glob<string[]>(
+  '/public/widget-options/accessibility-item/*.svg'
+);
+export const AccessibilityItemShape = getSpritesList(accessibilityItemSprites);
 
-export enum BagShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ bag
+const bagSprites = import.meta.glob<string[]>(
+  '/public/widget-options/accessibility-item/*.svg'
+);
+export const BagShape = getSpritesList(bagSprites);
 
-export enum BeardShape {
-  beard1 = 'beard-1',
-  beard2 = 'beard-2',
-  beard3 = 'beard-3',
-  beard4 = 'beard-4',
-  beard5 = 'beard-5',
-  beard6 = 'beard-6',
-  beard7 = 'beard-7',
-  beard8 = 'beard-8',
-}
+// ============ beard
+const beardSprites = import.meta.glob<string[]>(
+  '/public/widget-options/beard/*.svg'
+);
+export const BeardShape = getSpritesList(beardSprites);
 
-export enum BodyShape {
-  body1 = 'body-1',
-  body2 = 'body-2',
-  body3 = 'body-3',
-  body4 = 'body-4',
-  body5 = 'body-5',
-}
+// ============ body
+const bodySprites = import.meta.glob<string[]>(
+  '/public/widget-options/body/*.svg'
+);
+export const BodyShape = getSpritesList(bodySprites);
 
-export enum CoatShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ coat
+const coatSprites = import.meta.glob<string[]>(
+  '/public/widget-options/coat/*.svg'
+);
+export const CoatShape = getSpritesList(coatSprites);
 
-export enum DressShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ dress
+const dressSprites = import.meta.glob<string[]>(
+  '/public/widget-options/dress/*.svg'
+);
+export const DressShape = getSpritesList(dressSprites);
 
-export enum FaceShape {
-  face1 = 'face-1',
-  face2 = 'face-2',
-  face3 = 'face-3',
-  face4 = 'face-4',
-  face5 = 'face-5',
-  face6 = 'face-6',
-  face7 = 'face-7',
-  face8 = 'face-8',
-}
+// ============ face
+const faceSprites = import.meta.glob<string[]>(
+  '/public/widget-options/face/*.svg'
+);
+export const FaceShape = getSpritesList(faceSprites);
 
-export enum GedgetsShape {
-  gedgets1 = 'gedgets-1',
-  gedgets2 = 'gedgets-2',
-  gedgets3 = 'gedgets-3',
-  gedgets4 = 'gedgets-4',
-  gedgets5 = 'gedgets-5',
-  gedgets6 = 'gedgets-6',
-  gedgets7 = 'gedgets-7',
-  gedgets8 = 'gedgets-8',
-}
+// ============ gedgets
+const gedgetsSprites = import.meta.glob<string[]>(
+  '/public/widget-options/gedgets/*.svg'
+);
+export const GedgetsShape = getSpritesList(gedgetsSprites);
 
-export enum GlassesShape {
-  glasses1 = 'glasses-1',
-  glasses2 = 'glasses-2',
-  glasses3 = 'glasses-3',
-  glasses4 = 'glasses-4',
-  glasses5 = 'glasses-5',
-  glasses6 = 'glasses-6',
-  glasses7 = 'glasses-7',
-  glasses8 = 'glasses-8',
-  glasses9 = 'glasses-9',
-  glasses10 = 'glasses-10',
-}
+// ============ glasses
+const glassesSprites = import.meta.glob<string[]>(
+  '/public/widget-options/glasses/*.svg'
+);
+export const GlassesShape = getSpritesList(glassesSprites);
 
-export enum HeadpieceShape {
-  headpiece1 = 'headpiece-1',
-  headpiece2 = 'headpiece-2',
-  headpiece3 = 'headpiece-3',
-  headpiece4 = 'headpiece-4',
-  headpiece5 = 'headpiece-5',
-  headpiece6 = 'headpiece-6',
-  headpiece7 = 'headpiece-7',
-  headpiece8 = 'headpiece-8',
-  headpiece9 = 'headpiece-9',
-  headpiece10 = 'headpiece-10',
-}
+// ============ headpiece
+const headpieceSprites = import.meta.glob<string[]>(
+  '/public/widget-options/headpiece/*.svg'
+);
+export const HeadpieceShape = getSpritesList(headpieceSprites);
 
-export enum HairShape {
-  hair1 = 'hair-1',
-  hair2 = 'hair-2',
-  hair3 = 'hair-3',
-  hair4 = 'hair-4',
-  hair5 = 'hair-5',
-  hair6 = 'hair-6',
-  hair7 = 'hair-7',
-  hair8 = 'hair-8',
-  hair9 = 'hair-9',
-  hair10 = 'hair-10',
-  hair11 = 'hair-11',
-  hair12 = 'hair-12',
-  hair13 = 'hair-13',
-}
+// ============ hair
+const hairSprites = import.meta.glob<string[]>(
+  '/public/widget-options/hair/*.svg'
+);
+export const HairShape = getSpritesList(hairSprites);
 
-export enum NecklaceShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ necklace
+const necklaceSprites = import.meta.glob<string[]>(
+  '/public/widget-options/necklace/*.svg'
+);
+export const NecklaceShape = getSpritesList(necklaceSprites);
 
-export enum PantShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ pant
+const pantSprites = import.meta.glob<string[]>(
+  '/public/widget-options/pant/*.svg'
+);
+export const PantShape = getSpritesList(pantSprites);
 
-export enum ShoeShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ shoe
+const shoeSprites = import.meta.glob<string[]>(
+  '/public/widget-options/shoe/*.svg'
+);
+export const ShoeShape = getSpritesList(shoeSprites);
 
-export enum SoccerShape {
-  soccer1 = 'soccer-1',
-  soccer2 = 'soccer-2',
-  soccer3 = 'soccer-3',
-  soccer4 = 'soccer-4',
-  soccer5 = 'soccer-5',
-  soccer6 = 'soccer-6',
-  soccer7 = 'soccer-7',
-}
+// ============ soccer
+const soccerSprites = import.meta.glob<string[]>(
+  '/public/widget-options/soccer/*.svg'
+);
+export const SoccerShape = getSpritesList(soccerSprites);
 
-export enum TshirtShape {
-  itemA = 'item-A',
-  itemB = 'item-B',
-  itemC = 'item-C',
-  itemD = 'item-D',
-}
+// ============ tshirt
+const tshirtSprites = import.meta.glob<string[]>(
+  '/public/widget-options/tshirt/*.svg'
+);
+export const TshirtShape = getSpritesList(tshirtSprites);
 
 export type WidgetShape =
-  | AccessibilityItemShape
-  | BagShape
-  | BeardShape
-  | BodyShape
-  | CoatShape
-  | DressShape
-  | FaceShape
-  | GedgetsShape
-  | GlassesShape
-  | HeadpieceShape
-  | HairShape
-  | NecklaceShape
-  | PantShape
-  | ShoeShape
-  | SoccerShape
-  | TshirtShape;
+  | typeof AccessibilityItemShape
+  | typeof BagShape
+  | typeof BeardShape
+  | typeof BodyShape
+  | typeof CoatShape
+  | typeof DressShape
+  | typeof FaceShape
+  | typeof GedgetsShape
+  | typeof GlassesShape
+  | typeof HeadpieceShape
+  | typeof HairShape
+  | typeof NecklaceShape
+  | typeof PantShape
+  | typeof ShoeShape
+  | typeof SoccerShape
+  | typeof TshirtShape;
