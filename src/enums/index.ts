@@ -55,7 +55,7 @@ export const AccessibilityItemShape = getSpritesList(accessibilityItemSprites);
 
 // ============ bag
 const bagSprites = import.meta.glob<string[]>(
-  '/public/widget-options/accessibility-item/*.svg'
+  '/public/widget-options/bag/*.svg'
 );
 export const BagShape = getSpritesList(bagSprites);
 
