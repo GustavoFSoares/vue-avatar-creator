@@ -39,6 +39,9 @@ export const useAvatarStore = defineStore({
 
       return body.shape;
     },
+    items(state): AvatarWidgets {
+      return state.avatarConfiguration;
+    },
     // items: (state): Array<{ name: string; amount: number }> =>
     //   state.rawItems.reduce((items, item) => {
     //     const existingItem = items.find((it) => it.name === item);

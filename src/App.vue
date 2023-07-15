@@ -3,7 +3,9 @@
     <div class="app-container__wrapper">
       <div class="app-container__content">
         <main class="main-page">
-          <aside class="avatar-preview">preview</aside>
+          <aside class="avatar-preview">
+            <AvatarPreview />
+          </aside>
 
           <section ref="avatarSelectorRef" class="avatar-selector">
             <WidgetList
@@ -24,6 +26,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import AvatarPreview from './components/AvatarPreview/index.vue';
 import WidgetList from './components/WidgetList/index.vue';
 import WidgetOptionList from './components/WidgetOptionList/index.vue';
 
@@ -73,7 +76,7 @@ onMounted(() => {
   .avatar-preview {
     min-width: 305px;
     min-height: 300px;
-    background: red;
+    max-width: 305px;
   }
 
   .avatar-selector {

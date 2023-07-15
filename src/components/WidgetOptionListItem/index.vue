@@ -5,6 +5,7 @@
       'widget-option-list-item',
       { 'widget-option-list-item--used': used },
       { 'widget-option-list-item--selected': selected },
+      { 'widget-option-list-item--cant-remove': cantRemove && used },
     ]"
     @click="handleClick"
   >
@@ -33,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const $emit = defineEmits(['add', 'remove', 'select']);
 const props = defineProps({
@@ -53,11 +54,15 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  cantRemove: {
+    type: Boolean,
+    default: false,
+  },
 });
 const svgData = ref(null);
 
 const handleAction = () => {
-  if (props.used) {
+  if (props.used && !props.cantRemove) {
     $emit('remove');
     return;
   }
@@ -111,6 +116,11 @@ onMounted(async () => {
     border: 1px solid #22d2b3;
     box-sizing: border-box;
     box-shadow: 0 4px 8px #00000040;
+  }
+
+  &--cant-remove {
+    cursor: initial;
+    pointer-events: none;
   }
 
   &__figure {

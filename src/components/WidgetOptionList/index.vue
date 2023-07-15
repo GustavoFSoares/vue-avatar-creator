@@ -8,6 +8,7 @@
         :widget-group="currentWidget"
         :selected="selectedOption === widgetOption.item"
         :used="widgetOption.selected"
+        :cant-remove="itemCantRemove"
         @add="handleAddItem(widgetOption.item, widgetOptionIndex)"
         @remove="handleRemoveItem(widgetOption.item, widgetOptionIndex)"
         @select="handleSelect(widgetOption.item)"
@@ -64,6 +65,9 @@ const allowMultipleItems = computed(
 );
 const itemByBody = computed(
   () => AVATAR_SPECIFICATION[props.currentWidget].byBody
+);
+const itemCantRemove = computed(
+  () => AVATAR_SPECIFICATION[props.currentWidget].cantRemove
 );
 
 const handleAddItem = (item: string, index: number) => {
