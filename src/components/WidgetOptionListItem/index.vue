@@ -81,7 +81,7 @@ const handleClick = () => {
 
 onMounted(async () => {
   const svgContent = await import(
-    `/public/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
+    `/src/assets/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
   );
 
   svgData.value = svgContent.default;
