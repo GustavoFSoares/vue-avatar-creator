@@ -9,24 +9,29 @@ export const useAvatarStore = defineStore({
   id: 'avatar',
   state: () => ({
     avatarConfiguration: {
-      'accessibility-item': null,
-      bag: null,
-      beard: null,
-      body: {
-        shape: 'body-1',
+      'accessibility-item': {
+        shape: 'body-3--accessibility-item-2',
+        fillColor: '#0E202D',
       },
-      coat: null,
-      dress: null,
-      face: null,
-      gedgets: [] as IWidget<typeof GedgetsShape>[],
-      glasses: null,
-      headpiece: null,
-      hair: null,
-      necklace: null,
-      pant: null,
-      shoe: null,
-      soccer: [] as IWidget<typeof SoccerShape>[],
-      tshirt: null,
+      bag: { shape: 'body-3--bag-2', fillColor: '#0E202D' },
+      beard: { shape: 'beard-2', fillColor: '#0E202D' },
+      body: { shape: 'body-3', fillColor: '#0E202D' },
+      coat: { shape: 'body-3--coat-2', fillColor: '#0E202D' },
+      dress: { shape: 'body-3--dress-3', fillColor: '#0E202D' },
+      face: { shape: 'face-2', fillColor: '#0E202D' },
+      gedgets: [{ shape: 'gedgets-2', fillColor: '#0E202D' }] as IWidget<
+        typeof GedgetsShape
+      >[],
+      glasses: { shape: 'glasses-2', fillColor: '#0E202D' },
+      headpiece: { shape: 'headpiece-8', fillColor: '#0E202D' },
+      hair: { shape: 'hair-10', fillColor: '#0E202D' },
+      necklace: { shape: 'body-3--necklace-3', fillColor: '#0E202D' },
+      pant: { shape: 'body-3--pant-3', fillColor: '#0E202D' },
+      shoe: { shape: 'body-3--shoe-8', fillColor: '#0E202D' },
+      soccer: [{ shape: 'body-3--soccer-2', fillColor: '#0E202D' }] as IWidget<
+        typeof SoccerShape
+      >[],
+      tshirt: { shape: 'body-3--tshirt-10', fillColor: '#0E202D' },
     } as AvatarWidgets,
   }),
   getters: {
