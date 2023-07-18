@@ -4,7 +4,7 @@
       <div class="app-container__content">
         <main class="main-page">
           <aside class="avatar-preview">
-            <AvatarPreview />
+            <AvatarViewer />
           </aside>
 
           <section ref="avatarSelectorRef" class="avatar-selector">
@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import AvatarPreview from './components/AvatarPreview/index.vue';
+import AvatarViewer from './components/AvatarViewer/index.vue';
 import WidgetList from './components/WidgetList/index.vue';
 import WidgetOptionList from './components/WidgetOptionList/index.vue';
 

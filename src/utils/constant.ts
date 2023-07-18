@@ -25,7 +25,10 @@ interface AvatarSpecification {
   allowMultiple: boolean;
   byBody: boolean;
   cantRemove?: boolean;
+  x?: number;
+  y?: number;
 }
+
 export const AVATAR_SPECIFICATION: Readonly<{
   [key in `${WidgetType}`]: AvatarSpecification;
 }> = {
@@ -64,6 +67,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: false,
+    x: 60,
+    y: 20,
   },
   [WidgetType.GedgetsShape]: {
     zIndex: 0,
@@ -84,6 +89,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: false,
+    x: 48,
+    y: -8,
   },
   [WidgetType.NecklaceShape]: {
     zIndex: 0,
@@ -94,6 +101,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
+    x: 31,
+    y: 160,
   },
   [WidgetType.ShoeShape]: {
     zIndex: 0,
@@ -109,6 +118,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
+    x: 3,
+    y: 65,
   },
 };
 
