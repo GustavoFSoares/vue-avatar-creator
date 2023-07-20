@@ -96,6 +96,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
+    x: 55,
+    y: 85,
   },
   [WidgetType.PantShape]: {
     zIndex: 0,
