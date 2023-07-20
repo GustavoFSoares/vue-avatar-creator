@@ -101,8 +101,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 31,
-    y: 160,
+    x: 42,
+    y: 175,
   },
   [WidgetType.ShoeShape]: {
     zIndex: 0,
