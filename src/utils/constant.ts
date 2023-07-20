@@ -108,6 +108,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
+    x: 22,
+    y: 287,
   },
   [WidgetType.SoccerShape]: {
     zIndex: 0,
