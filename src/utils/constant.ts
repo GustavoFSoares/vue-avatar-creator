@@ -122,8 +122,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 3,
-    y: 65,
+    x: 11,
+    y: 74,
   },
 };
 
