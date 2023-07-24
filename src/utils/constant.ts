@@ -57,6 +57,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
+    x: 7,
+    y: 77,
   },
   [WidgetType.DressShape]: {
     zIndex: 0,
