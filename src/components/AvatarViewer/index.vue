@@ -20,13 +20,11 @@ const props = defineProps({
 const svgContent = ref(null);
 
 const getCurrentShape = (widget) => {
-  console.log(avatarStore.items[widget]);
   return avatarStore.items[widget];
 };
 
 const buildAvatar = async (avatarOption) => {
   const buildOrder = ['body', 'face', 'pant', 'shoe', 'necklace'];
-  console.log(avatarOption);
 
   // const sortedList = Object.entries(avatarOption.widgets).sort(
   //   ([prevShape, prev], [nextShape, next]) => {
@@ -39,6 +37,10 @@ const buildAvatar = async (avatarOption) => {
   const shapesPromises = buildOrder.map((shape) => {
     const shapeData = getCurrentShape(shape);
 
+    if (!shapeData) {
+      return null;
+    }
+
     const svgContent = import(
       `/src/assets/widget-options/${shape}/${shapeData.shape}.svg?raw`
     );
@@ -48,6 +50,10 @@ const buildAvatar = async (avatarOption) => {
 
   const svgRawList = await Promise.all(shapesPromises).then((raw) => {
     return raw.map((svgRaw, i) => {
+      if (!svgRaw) {
+        return null;
+      }
+
       const currentShape = buildOrder[i];
 
       svgRaw = svgRaw.default;
