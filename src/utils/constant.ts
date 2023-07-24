@@ -64,6 +64,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: true,
+    x: 7,
+    y: 88,
   },
   [WidgetType.FaceShape]: {
     zIndex: 0,

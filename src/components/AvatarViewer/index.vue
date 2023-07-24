@@ -31,6 +31,7 @@ const buildAvatar = async (avatarOption) => {
     'shoe',
     'tshirt',
     'coat',
+    'dress',
     'necklace',
   ];
   // const buildOrder = ['body', 'face', 'pant', 'tshirt'];
