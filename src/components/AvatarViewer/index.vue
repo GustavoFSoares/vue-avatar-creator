@@ -25,7 +25,7 @@ const getCurrentShape = (widget) => {
 };
 
 const buildAvatar = async (avatarOption) => {
-  const buildOrder = ['body', 'pant', 'shoe', 'necklace'];
+  const buildOrder = ['body', 'face', 'pant', 'shoe', 'necklace'];
   console.log(avatarOption);
 
   // const sortedList = Object.entries(avatarOption.widgets).sort(

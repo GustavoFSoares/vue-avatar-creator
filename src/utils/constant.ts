@@ -67,8 +67,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: false,
-    x: 60,
-    y: 20,
+    x: 58,
+    y: 27,
   },
   [WidgetType.GedgetsShape]: {
     zIndex: 0,
