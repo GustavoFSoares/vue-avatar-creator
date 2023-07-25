@@ -83,6 +83,8 @@ export const AVATAR_SPECIFICATION: Readonly<{
     zIndex: 0,
     allowMultiple: false,
     byBody: false,
+    x: 52,
+    y: 32,
   },
   [WidgetType.HeadpieceShape]: {
     zIndex: 0,
