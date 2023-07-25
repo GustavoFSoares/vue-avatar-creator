@@ -34,6 +34,7 @@ const buildAvatar = async (avatarOption) => {
     'coat',
     'necklace',
     'glasses',
+    'gedgets',
   ];
   // const buildOrder = ['body', 'face', 'pant', 'tshirt'];
 
@@ -45,15 +46,33 @@ const buildAvatar = async (avatarOption) => {
   //   }
   // );
 
-  const shapesPromises = buildOrder.map((shape) => {
-    const shapeData = getCurrentShape(shape);
+  const shapesOrder = buildOrder.reduce<{ shape: string; item: string }>(
+    (amount, shape) => {
+      const shapeData = getCurrentShape(shape);
 
-    if (!shapeData) {
-      return null;
-    }
+      if (!shapeData) {
+        return amount;
+      }
 
+      if (Array.isArray(shapeData)) {
+        const preparedShapeList = shapeData.map((shapeItem) => ({
+          shape,
+          item: shapeItem.shape,
+        }));
+
+        amount = [...amount, ...preparedShapeList];
+      } else {
+        amount.push({ shape, item: shapeData.shape });
+      }
+
+      return amount;
+    },
+    []
+  );
+
+  const shapesPromises = shapesOrder.map(({ shape, item }) => {
     const svgContent = import(
-      `/src/assets/widget-options/${shape}/${shapeData.shape}.svg?raw`
+      `/src/assets/widget-options/${shape}/${item}.svg?raw`
     );
 
     return svgContent;
@@ -65,7 +84,7 @@ const buildAvatar = async (avatarOption) => {
         return null;
       }
 
-      const currentShape = buildOrder[i];
+      const currentShape = shapesOrder[i].shape;
 
       svgRaw = svgRaw.default;
       const shapeData = getCurrentShape(currentShape);
@@ -111,7 +130,7 @@ const buildAvatar = async (avatarOption) => {
 
       return `
         <g 
-          id="vue-color-avatar-${shapeData.shape}" 
+          id="vue-avatar-creator-${shapeData.shape}"
           ${transform}
         >
           ${content}
