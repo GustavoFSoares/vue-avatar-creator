@@ -260,7 +260,7 @@ watch(
           &--body-1--soccer-1,
           &--body-1--soccer-2,
           &--body-1--soccer-3 {
-            transform: translate(44px, 85px);
+            transform: translate(44px, 83px);
           }
 
           &--body-1--soccer-4 {
