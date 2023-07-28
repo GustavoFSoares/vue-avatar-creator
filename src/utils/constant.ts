@@ -21,115 +21,78 @@ import {
 // import type { AvatarOption, AvatarSettings } from '../types'
 
 interface AvatarSpecification {
-  zIndex: number;
   allowMultiple: boolean;
   byBody: boolean;
   cantRemove?: boolean;
-  x?: number;
-  y?: number;
 }
 
 export const AVATAR_SPECIFICATION: Readonly<{
   [key in `${WidgetType}`]: AvatarSpecification;
 }> = {
   [WidgetType.AccessibilityItemShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.BagShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.BeardShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.BodyShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
     cantRemove: true,
   },
   [WidgetType.CoatShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 7,
-    y: 77,
   },
   [WidgetType.DressShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 7,
-    y: 88,
   },
   [WidgetType.FaceShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
-    x: 58,
-    y: 27,
   },
   [WidgetType.GedgetsShape]: {
-    zIndex: 0,
     allowMultiple: true,
     byBody: false,
   },
   [WidgetType.GlassesShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
-    x: 52,
-    y: 32,
   },
   [WidgetType.HeadpieceShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.HairShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
-    x: 48,
-    y: -8,
   },
   [WidgetType.NecklaceShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 55,
-    y: 85,
   },
   [WidgetType.PantShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 42,
-    y: 175,
   },
   [WidgetType.ShoeShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 22,
-    y: 287,
   },
   [WidgetType.SoccerShape]: {
-    zIndex: 0,
     allowMultiple: true,
     byBody: true,
   },
   [WidgetType.TshirtShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
-    x: 11,
-    y: 74,
   },
 };
 
