@@ -9,22 +9,22 @@ export const useAvatarStore = defineStore({
   id: 'avatar',
   state: () => ({
     avatarConfiguration: {
-      'accessibility-item': {},
-      bag: {},
-      beard: {},
+      'accessibility-item': null,
+      bag: null,
+      beard: null,
       body: { shape: 'body-1', fillColor: '#0E202D' },
-      coat: {},
-      dress: {},
-      face: {},
+      coat: null,
+      dress: null,
+      face: null,
       gedgets: [] as IWidget<typeof GedgetsShape>[],
-      glasses: {},
-      headpiece: {},
-      hair: {},
-      necklace: {},
-      pant: {},
-      shoe: {},
+      glasses: null,
+      headpiece: null,
+      hair: null,
+      necklace: null,
+      pant: null,
+      shoe: null,
       soccer: [] as IWidget<typeof SoccerShape>[],
-      tshirt: {},
+      tshirt: null,
     } as AvatarWidgets,
   }),
   getters: {
@@ -65,18 +65,29 @@ export const useAvatarStore = defineStore({
         return amount;
       }, []);
     },
-    // items: (state): Array<{ name: string; amount: number }> =>
-    //   state.rawItems.reduce((items, item) => {
-    //     const existingItem = items.find((it) => it.name === item);
-    //     if (!existingItem) {
-    //       items.push({ name: item, amount: 1 });
-    //     } else {
-    //       existingItem.amount++;
-    //     }
-    //     return items;
-    //   }, [] as Array<{ name: string; amount: number }>),
   },
   actions: {
+    clearSelections() {
+      Object.keys(this.avatarConfiguration).forEach((itemKey) => {
+        if (itemKey === 'body') {
+          return;
+        }
+
+        if (['soccer', 'gedgets'].includes(itemKey)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          this.avatarConfiguration[itemKey] = [];
+
+          return;
+        }
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        this.avatarConfiguration[itemKey] = null;
+      });
+
+      console.log(this.avatarConfiguration);
+    },
     addWidget(item: WidgetType, shape: string) {
       if (this.avatarConfiguration[item] === undefined) {
         throw new Error(`Error trying add item "${item}"`);
@@ -95,6 +106,10 @@ export const useAvatarStore = defineStore({
 
       if (item !== 'soccer' && item !== 'gedgets') {
         this.avatarConfiguration[item] = widgetData;
+      }
+
+      if (item === 'body') {
+        this.clearSelections();
       }
 
       // console.log(this.avatarConfiguration);
