@@ -27,51 +27,19 @@ const buildAvatar = async (avatarOption) => {
     'shoe',
     'tshirt',
     'dress',
+    'soccer',
     'coat',
     'necklace',
     'glasses',
     'gedgets',
     'headpiece',
+    'bag',
+    'accessibility-item',
   ];
 
   const preparedBuildOrder = avatarOption
     .filter((avatarItem) => buildOrder.includes(avatarItem.type))
     .sort((a, b) => buildOrder.indexOf(a.type) - buildOrder.indexOf(b.type));
-
-  console.log(avatarOption, preparedBuildOrder);
-  // const buildOrder = ['body', 'face', 'pant', 'tshirt'];
-
-  // const sortedList = Object.entries(avatarOption.widgets).sort(
-  //   ([prevShape, prev], [nextShape, next]) => {
-  //     const ix = prev.zIndex ?? AVATAR_LAYER[prevShape]?.zIndex ?? 0;
-  //     const iix = next.zIndex ?? AVATAR_LAYER[nextShape]?.zIndex ?? 0;
-  //     return ix - iix;
-  //   }
-  // );
-
-  // const shapesOrder = buildOrder.reduce<{ shape: string; item: string }>(
-  //   (amount, shape) => {
-  //     const shapeData = getCurrentShape(shape);
-
-  //     if (!shapeData) {
-  //       return amount;
-  //     }
-
-  //     // if (Array.isArray(shapeData)) {
-  //     //   const preparedShapeList = shapeData.map((shapeItem) => ({
-  //     //     shape,
-  //     //     item: shapeItem.shape,
-  //     //   }));
-
-  //     //   amount = [...amount, ...preparedShapeList];
-  //     // } else {
-  //     //   amount.push({ shape, item: shapeData.shape });
-  //     // }
-
-  //     return amount;
-  //   },
-  //   []
-  // );
 
   const shapesPromises = preparedBuildOrder.map(({ shape, type }) => {
     const svgContent = import(
@@ -105,30 +73,6 @@ const buildAvatar = async (avatarOption) => {
       ) {
         transform = `transform="translate(${avatarSpecificationData.x}, ${avatarSpecificationData.y})"`;
       }
-
-      // const [faceWidget] = sortedList;
-
-      // const promises = sortedList.map(async ([widgetType, opt]) => {
-      //   if (opt.shape === 'none') {
-      //     return '';
-      //   }
-
-      //   let svgRaw = (await widgetData[widgetType][opt.shape]()).default;
-
-      //   if (widgetType === 'ear') {
-      //     const [_, faceProps] = faceWidget;
-
-      //     const preparedIndexName = faceProps.shape.replace(/(^.)|(-.)/g, (x) => {
-      //       let letter = x[1] || x[0];
-
-      //       return letter.toUpperCase();
-      //     });
-
-      //     svgRaw = svgRaw.replace('#targetColor', FaceColors[preparedIndexName]);
-      //   }
-
-      //   return svgRaw;
-      // });
 
       return `
         <g 
@@ -219,6 +163,74 @@ watch(
 
         &--headpiece-9 {
           transform: translate(40px, -42px);
+        }
+      }
+
+      &__bag {
+        transform: translate(40px, -28px);
+
+        &--headpiece-3 {
+          transform: translate(55px, -35px);
+        }
+
+        &--headpiece-6 {
+          transform: translate(40px, 2px);
+        }
+
+        &--headpiece-7 {
+          transform: translate(40px, 11px);
+        }
+
+        &--headpiece-8 {
+          transform: translate(40px, -45px);
+        }
+
+        &--headpiece-9 {
+          transform: translate(40px, -42px);
+        }
+      }
+
+      &__accessibility-item {
+        &--accessibility-item-1 {
+          transform: translate(103px, 40px);
+        }
+
+        &--body-1 {
+          &--accessibility-item-1 {
+            transform: translate(13px, 130px);
+          }
+
+          &--accessibility-item-2 {
+            transform: translate(0, 110px);
+          }
+
+          &--accessibility-item-3 {
+            transform: translate(12px, 99px);
+          }
+
+          &--accessibility-item-4 {
+            transform: translate(110px, 152px);
+          }
+
+          &--accessibility-item-5 {
+            transform: translate(12px, 80px);
+          }
+
+          &--accessibility-item-6 {
+            transform: translate(108px, 150px);
+          }
+
+          &--accessibility-item-7 {
+            transform: translate(37px, 292px);
+          }
+
+          &--accessibility-item-8 {
+            transform: translate(86px, 292px);
+          }
+
+          &--accessibility-item-9 {
+            transform: translate(86px, 292px);
+          }
         }
       }
     }
