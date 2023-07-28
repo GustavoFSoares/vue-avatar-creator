@@ -257,6 +257,31 @@ watch(
         }
 
         &__soccer {
+          &--body-1--soccer-1,
+          &--body-1--soccer-2,
+          &--body-1--soccer-3 {
+            transform: translate(44px, 85px);
+          }
+
+          &--body-1--soccer-4 {
+            transform: translate(70px, 88px);
+          }
+
+          &--soccer-1,
+          &--soccer-2,
+          &--soccer-3 {
+            transform: translate(-15px, 27px);
+          }
+
+          &--soccer-4,
+          &--soccer-5 {
+            transform: translate(13px, 60px);
+          }
+
+          &--soccer-6,
+          &--soccer-7 {
+            transform: translate(130px, 320px);
+          }
         }
       }
     }
