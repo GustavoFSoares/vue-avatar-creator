@@ -19,10 +19,6 @@ const props = defineProps({
 
 const svgContent = ref(null);
 
-const getCurrentShape = (widget) => {
-  return avatarStore.items[widget];
-};
-
 const buildAvatar = async (avatarOption) => {
   const buildOrder = [
     'body',
@@ -36,6 +32,12 @@ const buildAvatar = async (avatarOption) => {
     'glasses',
     'gedgets',
   ];
+
+  const preparedBuildOrder = avatarOption
+    .filter((avatarItem) => buildOrder.includes(avatarItem.type))
+    .sort((a, b) => buildOrder.indexOf(a.type) - buildOrder.indexOf(b.type));
+
+  console.log(avatarOption, preparedBuildOrder);
   // const buildOrder = ['body', 'face', 'pant', 'tshirt'];
 
   // const sortedList = Object.entries(avatarOption.widgets).sort(
@@ -46,33 +48,33 @@ const buildAvatar = async (avatarOption) => {
   //   }
   // );
 
-  const shapesOrder = buildOrder.reduce<{ shape: string; item: string }>(
-    (amount, shape) => {
-      const shapeData = getCurrentShape(shape);
+  // const shapesOrder = buildOrder.reduce<{ shape: string; item: string }>(
+  //   (amount, shape) => {
+  //     const shapeData = getCurrentShape(shape);
 
-      if (!shapeData) {
-        return amount;
-      }
+  //     if (!shapeData) {
+  //       return amount;
+  //     }
 
-      if (Array.isArray(shapeData)) {
-        const preparedShapeList = shapeData.map((shapeItem) => ({
-          shape,
-          item: shapeItem.shape,
-        }));
+  //     // if (Array.isArray(shapeData)) {
+  //     //   const preparedShapeList = shapeData.map((shapeItem) => ({
+  //     //     shape,
+  //     //     item: shapeItem.shape,
+  //     //   }));
 
-        amount = [...amount, ...preparedShapeList];
-      } else {
-        amount.push({ shape, item: shapeData.shape });
-      }
+  //     //   amount = [...amount, ...preparedShapeList];
+  //     // } else {
+  //     //   amount.push({ shape, item: shapeData.shape });
+  //     // }
 
-      return amount;
-    },
-    []
-  );
+  //     return amount;
+  //   },
+  //   []
+  // );
 
-  const shapesPromises = shapesOrder.map(({ shape, item }) => {
+  const shapesPromises = preparedBuildOrder.map(({ shape, type }) => {
     const svgContent = import(
-      `/src/assets/widget-options/${shape}/${item}.svg?raw`
+      `/src/assets/widget-options/${type}/${shape}.svg?raw`
     );
 
     return svgContent;
@@ -84,17 +86,16 @@ const buildAvatar = async (avatarOption) => {
         return null;
       }
 
-      const currentShape = shapesOrder[i].shape;
+      const shapeData = preparedBuildOrder[i];
 
       svgRaw = svgRaw.default;
-      const shapeData = getCurrentShape(currentShape);
 
       const content = svgRaw
         .slice(svgRaw.indexOf('>', svgRaw.indexOf('<svg')) + 1)
         .replace('</svg>', '');
       // .replaceAll('$fillColor', widgetFillColor || 'transparent');
 
-      const avatarSpecificationData = AVATAR_SPECIFICATION[currentShape];
+      const avatarSpecificationData = AVATAR_SPECIFICATION[shapeData.type];
 
       let transform = '';
       if (
@@ -166,8 +167,34 @@ watch(
 
 <style lang="scss" scoped>
 .avatar-preview {
-  :deep(#face) {
-    display: none;
+  :deep {
+    #vue-avatar-creator {
+      &-gedgets-1 {
+        transform: translate(-25px, 40px);
+      }
+
+      &-gedgets-2 {
+        transform: translate(30px, 80px);
+      }
+
+      &-gedgets-3 {
+        transform: translate(37px, 70px);
+      }
+
+      &-gedgets-4 {
+        transform: translate(37px, 60px);
+      }
+
+      &-gedgets-5,
+      &-gedgets-6,
+      &-gedgets-7 {
+        transform: translate(82px, 157px);
+      }
+
+      &-gedgets-8 {
+        transform: translate(37px, 15px);
+      }
+    }
   }
 }
 </style>
