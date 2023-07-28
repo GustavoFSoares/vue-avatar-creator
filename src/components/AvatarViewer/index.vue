@@ -31,6 +31,7 @@ const buildAvatar = async (avatarOption) => {
     'necklace',
     'glasses',
     'gedgets',
+    'headpiece',
   ];
 
   const preparedBuildOrder = avatarOption
@@ -131,7 +132,7 @@ const buildAvatar = async (avatarOption) => {
 
       return `
         <g 
-          id="vue-avatar-creator-${shapeData.shape}"
+          class="avatar-item__${shapeData.type} avatar-item__${shapeData.type}--${shapeData.shape}"
           ${transform}
         >
           ${content}
@@ -168,31 +169,57 @@ watch(
 <style lang="scss" scoped>
 .avatar-preview {
   :deep {
-    #vue-avatar-creator {
-      &-gedgets-1 {
-        transform: translate(-25px, 40px);
+    .avatar-item {
+      &__gedgets {
+        &--gedgets-1 {
+          transform: translate(-25px, 40px);
+        }
+
+        &--gedgets-2 {
+          transform: translate(30px, 80px);
+        }
+
+        &--gedgets-3 {
+          transform: translate(37px, 70px);
+        }
+
+        &--gedgets-4 {
+          transform: translate(37px, 60px);
+        }
+
+        &--gedgets-5,
+        &--gedgets-6,
+        &--gedgets-7 {
+          transform: translate(82px, 157px);
+        }
+
+        &--gedgets-8 {
+          transform: translate(37px, 15px);
+        }
       }
 
-      &-gedgets-2 {
-        transform: translate(30px, 80px);
-      }
+      &__headpiece {
+        transform: translate(40px, -28px);
 
-      &-gedgets-3 {
-        transform: translate(37px, 70px);
-      }
+        &--headpiece-3 {
+          transform: translate(55px, -35px);
+        }
 
-      &-gedgets-4 {
-        transform: translate(37px, 60px);
-      }
+        &--headpiece-6 {
+          transform: translate(40px, 2px);
+        }
 
-      &-gedgets-5,
-      &-gedgets-6,
-      &-gedgets-7 {
-        transform: translate(82px, 157px);
-      }
+        &--headpiece-7 {
+          transform: translate(40px, 11px);
+        }
 
-      &-gedgets-8 {
-        transform: translate(37px, 15px);
+        &--headpiece-8 {
+          transform: translate(40px, -45px);
+        }
+
+        &--headpiece-9 {
+          transform: translate(40px, -42px);
+        }
       }
     }
   }
