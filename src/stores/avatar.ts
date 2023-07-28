@@ -9,29 +9,22 @@ export const useAvatarStore = defineStore({
   id: 'avatar',
   state: () => ({
     avatarConfiguration: {
-      'accessibility-item': {
-        shape: 'body-1--accessibility-item-2',
-        fillColor: '#0E202D',
-      },
-      bag: { shape: 'body-1--bag-2', fillColor: '#0E202D' },
-      beard: { shape: 'beard-2', fillColor: '#0E202D' },
+      'accessibility-item': {},
+      bag: {},
+      beard: {},
       body: { shape: 'body-1', fillColor: '#0E202D' },
-      coat: { shape: 'body-1--coat-2', fillColor: '#0E202D' },
-      dress: { shape: 'body-1--dress-3', fillColor: '#0E202D' },
-      face: { shape: 'face-2', fillColor: '#0E202D' },
-      gedgets: [{ shape: 'gedgets-2', fillColor: '#0E202D' }] as IWidget<
-        typeof GedgetsShape
-      >[],
-      glasses: { shape: 'glasses-2', fillColor: '#0E202D' },
-      headpiece: { shape: 'headpiece-8', fillColor: '#0E202D' },
-      hair: { shape: 'hair-10', fillColor: '#0E202D' },
-      necklace: { shape: 'body-1--necklace-3', fillColor: '#0E202D' },
-      pant: { shape: 'body-1--pant-3', fillColor: '#0E202D' },
-      shoe: { shape: 'body-1--shoe-1', fillColor: '#0E202D' },
-      soccer: [{ shape: 'body-1--soccer-2', fillColor: '#0E202D' }] as IWidget<
-        typeof SoccerShape
-      >[],
-      tshirt: { shape: 'body-1--tshirt-10', fillColor: '#0E202D' },
+      coat: {},
+      dress: {},
+      face: {},
+      gedgets: [] as IWidget<typeof GedgetsShape>[],
+      glasses: {},
+      headpiece: {},
+      hair: {},
+      necklace: {},
+      pant: {},
+      shoe: {},
+      soccer: [] as IWidget<typeof SoccerShape>[],
+      tshirt: {},
     } as AvatarWidgets,
   }),
   getters: {
@@ -104,7 +97,7 @@ export const useAvatarStore = defineStore({
         this.avatarConfiguration[item] = widgetData;
       }
 
-      console.log(this.avatarConfiguration);
+      // console.log(this.avatarConfiguration);
     },
     removeWidget(item: WidgetType, shape: string) {
       if (!this.avatarConfiguration[item]) {
@@ -125,7 +118,7 @@ export const useAvatarStore = defineStore({
         this.avatarConfiguration[item] = null;
       }
 
-      console.log(this.avatarConfiguration);
+      // console.log(this.avatarConfiguration);
     },
     selectWidgetColor(item: WidgetType, color: string) {
       if (!this.avatarConfiguration[item]) {
@@ -149,7 +142,7 @@ export const useAvatarStore = defineStore({
         }
       }
 
-      console.log(this.avatarConfiguration[item]);
+      // console.log(this.avatarConfiguration[item]);
     },
   },
 });

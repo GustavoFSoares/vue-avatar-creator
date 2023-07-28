@@ -36,7 +36,9 @@ const buildAvatar = async (avatarOption) => {
   ];
 
   const preparedBuildOrder = avatarOption
-    .filter((avatarItem) => buildOrder.includes(avatarItem.type))
+    .filter(
+      (avatarItem) => buildOrder.includes(avatarItem.type) && avatarItem.shape
+    )
     .sort((a, b) => buildOrder.indexOf(a.type) - buildOrder.indexOf(b.type));
 
   const shapesPromises = preparedBuildOrder.map(({ shape, type }) => {
