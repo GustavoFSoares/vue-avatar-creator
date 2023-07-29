@@ -104,6 +104,8 @@ watch(
 <style lang="scss" scoped>
 .avatar-preview {
   :deep {
+    content: '';
+
     .avatar-body__body-1 {
       &.avatar-item {
         &__coat {
@@ -760,6 +762,263 @@ watch(
           &--soccer-6,
           &--soccer-7 {
             transform: translate(130px, 307px);
+          }
+        }
+      }
+    }
+
+    .avatar-body__body-4 {
+      &.avatar-item {
+        &__coat {
+          transform: translate(5px, 63px);
+
+          &--body-4--coat-3 {
+            transform: translate(2px, 64px);
+          }
+
+          &--body-4--coat-7 {
+            transform: translate(4px, 64px);
+          }
+
+          &--body-4--coat-5,
+          &--body-4--coat-6,
+          &--body-4--coat-8 {
+            transform: translate(4px, 65px);
+          }
+        }
+
+        &__dress {
+          transform: translate(30px, 71px);
+
+          &--body-4--dress-4,
+          &--body-4--dress-8 {
+            transform: translate(4px, 67px);
+          }
+
+          &--body-4--dress-5,
+          &--body-4--dress-6,
+          &--body-4--dress-7 {
+            transform: translate(31px, 71px);
+          }
+        }
+
+        &__face {
+          transform: translate(48px, 12px);
+        }
+
+        &__glasses {
+          transform: translate(43px, 17px);
+        }
+
+        &__necklace {
+          transform: translate(46px, 70px);
+
+          &--body-4--necklace-4 {
+            transform: translate(55px, 68px);
+          }
+
+          &--body-4--necklace-5,
+          &--body-4--necklace-6,
+          &--body-4--necklace-7 {
+            transform: translate(43px, 70px);
+          }
+
+          &--body-4--necklace-8 {
+            transform: translate(56px, 70px);
+          }
+        }
+
+        &__pant {
+          transform: translate(33px, 144px);
+
+          &--body-4--pant-3,
+          &--body-4--pant-6,
+          &--body-4--pant-7,
+          &--body-4--pant-8 {
+            transform: translate(30px, 145px);
+          }
+        }
+
+        &__shoe {
+          transform: translate(28px, 221px);
+
+          &--body-4--shoe-3 {
+            transform: translate(28px, 225px);
+          }
+
+          &--body-4--shoe-4 {
+            transform: translate(20px, 220px);
+          }
+
+          &--body-4--shoe-5 {
+            transform: translate(20px, 217px);
+          }
+
+          &--body-4--shoe-7,
+          &--body-4--shoe-8 {
+            transform: translate(28px, 188px);
+          }
+        }
+
+        &__tshirt {
+          transform: translate(5px, 66px);
+
+          &--body-4--tshirt-10,
+          &--body-4--tshirt-9 {
+            transform: translate(33px, 72px);
+          }
+
+          &--body-4--tshirt-3,
+          &--body-4--tshirt-5 {
+            transform: translate(31px, 68px);
+          }
+
+          &--body-4--tshirt-4 {
+            transform: translate(5px, 69px);
+          }
+
+          &--body-4--tshirt-7 {
+            transform: translate(31px, 72px);
+          }
+
+          &--body-4--tshirt-8 {
+            transform: translate(31px, 68px);
+          }
+        }
+
+        &__gedgets {
+          &--gedgets-1 {
+            transform: translate(-25px, 40px);
+          }
+
+          &--gedgets-2 {
+            transform: translate(30px, 56px);
+          }
+
+          &--gedgets-3 {
+            transform: translate(27px, 51px);
+          }
+
+          &--gedgets-4 {
+            transform: translate(27px, 42px);
+          }
+
+          &--gedgets-5,
+          &--gedgets-6,
+          &--gedgets-7 {
+            transform: translate(68px, 104px);
+          }
+
+          &--gedgets-8 {
+            transform: translate(28px, 0px);
+          }
+        }
+
+        &__headpiece {
+          transform: translate(30px, -39px);
+
+          &--headpiece-3 {
+            transform: translate(48px, -48px);
+          }
+
+          &--headpiece-6 {
+            transform: translate(30px, -10px);
+          }
+
+          &--headpiece-7 {
+            transform: translate(30px, -4px);
+          }
+
+          &--headpiece-8 {
+            transform: translate(30px, -60px);
+          }
+
+          &--headpiece-9 {
+            transform: translate(30px, -50px);
+          }
+        }
+
+        &__bag {
+          &--body-4--bag-1 {
+            transform: translate(13px, 72px);
+          }
+
+          &--body-4--bag-2 {
+            transform: translate(17px, 72px);
+          }
+
+          &--body-4--bag-3 {
+            transform: translate(23px, 74px);
+          }
+
+          &--body-4--bag-4 {
+            transform: translate(-48px, 154px);
+          }
+        }
+
+        &__accessibility-item {
+          &--accessibility-item-1 {
+            transform: translate(92px, 22px);
+          }
+
+          &--body-4--accessibility-item-1 {
+            transform: translate(25px, 194px);
+          }
+
+          &--body-4--accessibility-item-2 {
+            transform: translate(74px, 194px);
+          }
+
+          &--body-4--accessibility-item-3 {
+            transform: translate(0px, 100px);
+          }
+
+          &--body-4--accessibility-item-4 {
+            transform: translate(104px, 118px);
+          }
+
+          &--body-4--accessibility-item-5 {
+            transform: translate(-2px, 78px);
+          }
+
+          &--body-4--accessibility-item-6 {
+            transform: translate(99px, 103px);
+          }
+
+          &--body-4--accessibility-item-7 {
+            transform: translate(30px, 98px);
+          }
+
+          &--body-4--accessibility-item-8 {
+            transform: translate(-10px, 102px);
+          }
+        }
+
+        &__soccer {
+          &--body-4--soccer-1,
+          &--body-4--soccer-2,
+          &--body-4--soccer-3 {
+            transform: translate(30px, 67px);
+          }
+
+          &--body-4--soccer-4 {
+            transform: translate(54px, 67px);
+          }
+
+          &--soccer-1,
+          &--soccer-2,
+          &--soccer-3 {
+            transform: translate(-48px, 45px) rotate(335deg);
+          }
+
+          &--soccer-4,
+          &--soccer-5 {
+            transform: translate(0px, 73px);
+          }
+
+          &--soccer-6,
+          &--soccer-7 {
+            transform: translate(130px, 190px);
           }
         }
       }
