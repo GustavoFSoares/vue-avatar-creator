@@ -287,6 +287,474 @@ watch(
         }
       }
     }
+
+    .avatar-body__body-2 {
+      &.avatar-item {
+        &__coat {
+          transform: translate(20px, 63px);
+
+          &--body-2--coat-7,
+          &--body-2--coat-8 {
+            transform: translate(18px, 63px);
+          }
+        }
+
+        &__dress {
+          transform: translate(37px, 69px);
+
+          &--body-2--dress-4,
+          &--body-2--dress-8 {
+            transform: translate(18px, 65px);
+          }
+
+          &--body-2--dress-5,
+          &--body-2--dress-6,
+          &--body-2--dress-7 {
+            transform: translate(45px, 68px);
+          }
+        }
+
+        &__face {
+          transform: translate(48px, 12px);
+        }
+
+        &__glasses {
+          transform: translate(43px, 17px);
+        }
+
+        &__necklace {
+          transform: translate(46px, 68px);
+
+          &--body-2--necklace-4 {
+            transform: translate(55px, 68px);
+          }
+
+          &--body-2--necklace-5,
+          &--body-2--necklace-6,
+          &--body-2--necklace-7 {
+            transform: translate(43px, 67px);
+          }
+
+          &--body-2--necklace-8 {
+            transform: translate(56px, 68px);
+          }
+        }
+
+        &__pant {
+          transform: translate(45px, 155px);
+
+          &--body-2--pant-8 {
+            transform: translate(44px, 155px);
+          }
+        }
+
+        &__shoe {
+          transform: translate(35px, 221px);
+
+          &--body-2--shoe-3 {
+            transform: translate(35px, 225px);
+          }
+
+          &--body-2--shoe-4 {
+            transform: translate(31px, 220px);
+          }
+          &--body-2--shoe-5 {
+            transform: translate(31px, 216px);
+          }
+
+          &--body-2--shoe-7,
+          &--body-2--shoe-8 {
+            transform: translate(29px, 189px);
+          }
+        }
+
+        &__tshirt {
+          transform: translate(17px, 64px);
+
+          &--body-2--tshirt-10,
+          &--body-2--tshirt-11 {
+            transform: translate(46px, 70px);
+          }
+
+          &--body-2--tshirt-3,
+          &--body-2--tshirt-4,
+          &--body-2--tshirt-5,
+          &--body-2--tshirt-8 {
+            transform: translate(39px, 68px);
+          }
+        }
+
+        &__gedgets {
+          &--gedgets-1 {
+            transform: translate(-25px, 40px);
+          }
+
+          &--gedgets-2 {
+            transform: translate(30px, 56px);
+          }
+
+          &--gedgets-3 {
+            transform: translate(27px, 51px);
+          }
+
+          &--gedgets-4 {
+            transform: translate(27px, 42px);
+          }
+
+          &--gedgets-5,
+          &--gedgets-6,
+          &--gedgets-7 {
+            transform: translate(61px, 100px);
+          }
+
+          &--gedgets-8 {
+            transform: translate(28px, 0px);
+          }
+        }
+
+        &__headpiece {
+          transform: translate(30px, -39px);
+
+          &--headpiece-3 {
+            transform: translate(48px, -48px);
+          }
+
+          &--headpiece-6 {
+            transform: translate(30px, -10px);
+          }
+
+          &--headpiece-7 {
+            transform: translate(30px, -4px);
+          }
+
+          &--headpiece-8 {
+            transform: translate(30px, -60px);
+          }
+
+          &--headpiece-9 {
+            transform: translate(30px, -50px);
+          }
+        }
+
+        &__bag {
+          &--body-2--bag-1 {
+            transform: translate(21px, 68px);
+          }
+
+          &--body-2--bag-2 {
+            transform: translate(35px, 70px);
+          }
+
+          &--body-2--bag-3 {
+            transform: translate(15px, 72px);
+          }
+
+          &--body-2--bag-4 {
+            transform: translate(-28px, 154px);
+          }
+        }
+
+        &__accessibility-item {
+          &--accessibility-item-1 {
+            transform: translate(92px, 22px);
+          }
+
+          &--body-2--accessibility-item-1 {
+            transform: translate(25px, 105px);
+          }
+
+          &--body-2--accessibility-item-2 {
+            transform: translate(0, 110px);
+          }
+
+          &--body-2--accessibility-item-3 {
+            transform: translate(3px, 106px);
+          }
+
+          &--body-2--accessibility-item-4 {
+            transform: translate(96px, 107px);
+          }
+
+          &--body-2--accessibility-item-5 {
+            transform: translate(29px, 190px);
+          }
+
+          &--body-2--accessibility-item-6 {
+            transform: translate(71px, 190px);
+          }
+
+          &--body-2--accessibility-item-7 {
+            transform: translate(0px, 98px);
+          }
+
+          &--body-2--accessibility-item-8 {
+            transform: translate(89px, 102px);
+          }
+        }
+
+        &__soccer {
+          &--body-2--soccer-1,
+          &--body-2--soccer-2,
+          &--body-2--soccer-3 {
+            transform: translate(36px, 66px);
+          }
+
+          &--body-2--soccer-4 {
+            transform: translate(60px, 67px);
+          }
+
+          &--soccer-1,
+          &--soccer-2,
+          &--soccer-3 {
+            transform: translate(-48px, 58px) rotate(335deg);
+          }
+
+          &--soccer-4,
+          &--soccer-5 {
+            transform: translate(0px, 73px);
+          }
+
+          &--soccer-6,
+          &--soccer-7 {
+            transform: translate(130px, 190px);
+          }
+        }
+      }
+    }
+
+    .avatar-body__body-3 {
+      &.avatar-item {
+        &__coat {
+          transform: translate(20px, 63px);
+
+          &--body-2--coat-7,
+          &--body-2--coat-8 {
+            transform: translate(18px, 63px);
+          }
+        }
+
+        &__dress {
+          transform: translate(37px, 69px);
+
+          &--body-2--dress-4,
+          &--body-2--dress-8 {
+            transform: translate(18px, 65px);
+          }
+
+          &--body-2--dress-5,
+          &--body-2--dress-6,
+          &--body-2--dress-7 {
+            transform: translate(45px, 68px);
+          }
+        }
+
+        &__face {
+          transform: translate(48px, 12px);
+        }
+
+        &__glasses {
+          transform: translate(43px, 17px);
+        }
+
+        &__necklace {
+          transform: translate(46px, 68px);
+
+          &--body-2--necklace-4 {
+            transform: translate(55px, 68px);
+          }
+
+          &--body-2--necklace-5,
+          &--body-2--necklace-6,
+          &--body-2--necklace-7 {
+            transform: translate(43px, 67px);
+          }
+
+          &--body-2--necklace-8 {
+            transform: translate(56px, 68px);
+          }
+        }
+
+        &__pant {
+          transform: translate(45px, 155px);
+
+          &--body-2--pant-8 {
+            transform: translate(44px, 155px);
+          }
+        }
+
+        &__shoe {
+          transform: translate(35px, 221px);
+
+          &--body-2--shoe-3 {
+            transform: translate(35px, 225px);
+          }
+
+          &--body-2--shoe-4 {
+            transform: translate(31px, 220px);
+          }
+          &--body-2--shoe-5 {
+            transform: translate(31px, 216px);
+          }
+
+          &--body-2--shoe-7,
+          &--body-2--shoe-8 {
+            transform: translate(29px, 189px);
+          }
+        }
+
+        &__tshirt {
+          transform: translate(17px, 64px);
+
+          &--body-2--tshirt-10,
+          &--body-2--tshirt-11 {
+            transform: translate(46px, 70px);
+          }
+
+          &--body-2--tshirt-3,
+          &--body-2--tshirt-4,
+          &--body-2--tshirt-5,
+          &--body-2--tshirt-8 {
+            transform: translate(39px, 68px);
+          }
+        }
+
+        &__gedgets {
+          &--gedgets-1 {
+            transform: translate(-25px, 40px);
+          }
+
+          &--gedgets-2 {
+            transform: translate(30px, 56px);
+          }
+
+          &--gedgets-3 {
+            transform: translate(27px, 51px);
+          }
+
+          &--gedgets-4 {
+            transform: translate(27px, 42px);
+          }
+
+          &--gedgets-5,
+          &--gedgets-6,
+          &--gedgets-7 {
+            transform: translate(61px, 100px);
+          }
+
+          &--gedgets-8 {
+            transform: translate(28px, 0px);
+          }
+        }
+
+        &__headpiece {
+          transform: translate(30px, -39px);
+
+          &--headpiece-3 {
+            transform: translate(48px, -48px);
+          }
+
+          &--headpiece-6 {
+            transform: translate(30px, -10px);
+          }
+
+          &--headpiece-7 {
+            transform: translate(30px, -4px);
+          }
+
+          &--headpiece-8 {
+            transform: translate(30px, -60px);
+          }
+
+          &--headpiece-9 {
+            transform: translate(30px, -50px);
+          }
+        }
+
+        &__bag {
+          &--body-2--bag-1 {
+            transform: translate(21px, 68px);
+          }
+
+          &--body-2--bag-2 {
+            transform: translate(35px, 70px);
+          }
+
+          &--body-2--bag-3 {
+            transform: translate(15px, 72px);
+          }
+
+          &--body-2--bag-4 {
+            transform: translate(-28px, 154px);
+          }
+        }
+
+        &__accessibility-item {
+          &--accessibility-item-1 {
+            transform: translate(92px, 22px);
+          }
+
+          &--body-2--accessibility-item-1 {
+            transform: translate(25px, 105px);
+          }
+
+          &--body-2--accessibility-item-2 {
+            transform: translate(0, 110px);
+          }
+
+          &--body-2--accessibility-item-3 {
+            transform: translate(3px, 106px);
+          }
+
+          &--body-2--accessibility-item-4 {
+            transform: translate(96px, 107px);
+          }
+
+          &--body-2--accessibility-item-5 {
+            transform: translate(29px, 190px);
+          }
+
+          &--body-2--accessibility-item-6 {
+            transform: translate(71px, 190px);
+          }
+
+          &--body-2--accessibility-item-7 {
+            transform: translate(0px, 98px);
+          }
+
+          &--body-2--accessibility-item-8 {
+            transform: translate(89px, 102px);
+          }
+        }
+
+        &__soccer {
+          &--body-2--soccer-1,
+          &--body-2--soccer-2,
+          &--body-2--soccer-3 {
+            transform: translate(36px, 66px);
+          }
+
+          &--body-2--soccer-4 {
+            transform: translate(60px, 67px);
+          }
+
+          &--soccer-1,
+          &--soccer-2,
+          &--soccer-3 {
+            transform: translate(-48px, 58px) rotate(335deg);
+          }
+
+          &--soccer-4,
+          &--soccer-5 {
+            transform: translate(0px, 73px);
+          }
+
+          &--soccer-6,
+          &--soccer-7 {
+            transform: translate(130px, 190px);
+          }
+        }
+      }
+    }
   }
 }
 </style>

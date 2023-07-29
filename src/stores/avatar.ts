@@ -12,7 +12,7 @@ export const useAvatarStore = defineStore({
       'accessibility-item': null,
       bag: null,
       beard: null,
-      body: { shape: 'body-1', fillColor: '#0E202D' },
+      body: { shape: 'body-2', fillColor: '#0E202D' },
       coat: null,
       dress: null,
       face: null,
