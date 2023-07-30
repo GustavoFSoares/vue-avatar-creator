@@ -7,16 +7,8 @@
             <AvatarCreatorViewer />
           </aside>
 
-          <section ref="avatarSelectorRef" class="avatar-selector">
-            <WidgetList
-              v-model="selectedWidget"
-              :container-width="containerWidth"
-            />
-
-            <WidgetOptionList
-              v-if="selectedWidget"
-              :current-widget="selectedWidget"
-            />
+          <section class="avatar-options">
+            <AvatarCreatorOptions />
           </section>
         </main>
       </div>
@@ -25,27 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import AvatarCreatorViewer from './partials/AvatarCreatorViewer/index.vue';
-import WidgetList from './components/WidgetList/index.vue';
-import WidgetOptionList from './components/WidgetOptionList/index.vue';
-
-const avatarSelectorRef = ref(null);
-const selectedWidget = ref(null);
-
-const containerWidth: number = ref(320);
-
-const getContainerWidth = () => {
-  containerWidth.value = avatarSelectorRef.value.clientWidth;
-};
-
-onMounted(() => {
-  getContainerWidth();
-
-  window.addEventListener('resize', () => {
-    getContainerWidth();
-  });
-});
+import AvatarCreatorOptions from './partials/AvatarCreatorOptions/index.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -73,16 +46,8 @@ onMounted(() => {
   display: flex;
   gap: 35px;
 
-  .avatar-preview {
-  }
-
-  .avatar-selector {
+  .avatar-options {
     width: 100%;
-    flex-grow: 1;
-
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
   }
 }
 </style>
