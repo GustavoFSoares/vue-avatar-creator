@@ -109,35 +109,35 @@ watch(
     .avatar-body__body-1 {
       &.avatar-item {
         &__coat {
-          transform: translate(7px, 77px);
+          transform: translate(-7px, 60px);
         }
 
         &__dress {
-          transform: translate(7px, 88px);
+          transform: translate(-7px, 72px);
         }
 
         &__face {
-          transform: translate(58px, 27px);
+          transform: translate(45px, 12px);
         }
 
         &__glasses {
-          transform: translate(52px, 32px);
+          transform: translate(39px, 18px);
         }
 
         &__necklace {
-          transform: translate(55px, 85px);
+          transform: translate(41px, 69px);
         }
 
         &__pant {
-          transform: translate(42px, 175px);
+          transform: translate(28px, 164px);
         }
 
         &__shoe {
-          transform: translate(22px, 287px);
+          transform: translate(9px, 271px);
         }
 
         &__tshirt {
-          transform: translate(11px, 74px);
+          transform: translate(-3px, 58px);
         }
 
         &__gedgets {
@@ -146,117 +146,107 @@ watch(
           }
 
           &--gedgets-2 {
-            transform: translate(30px, 80px);
+            transform: translate(27px, 59px);
           }
 
           &--gedgets-3 {
-            transform: translate(37px, 70px);
+            transform: translate(23px, 56px);
           }
 
           &--gedgets-4 {
-            transform: translate(37px, 60px);
+            transform: translate(23px, 45px);
           }
 
           &--gedgets-5,
           &--gedgets-6,
           &--gedgets-7 {
-            transform: translate(82px, 157px);
+            transform: translate(69px, 138px);
           }
 
           &--gedgets-8 {
-            transform: translate(37px, 15px);
+            transform: translate(24px, 0px);
           }
         }
 
         &__headpiece {
-          transform: translate(40px, -28px);
+          transform: translate(26px, -40px);
 
           &--headpiece-3 {
-            transform: translate(55px, -35px);
+            transform: translate(44px, -50px);
           }
 
           &--headpiece-6 {
-            transform: translate(40px, 2px);
+            transform: translate(26px, -15px);
           }
 
           &--headpiece-7 {
-            transform: translate(40px, 11px);
+            transform: translate(26px, -6px);
           }
 
           &--headpiece-8 {
-            transform: translate(40px, -45px);
+            transform: translate(26px, -61px);
           }
 
           &--headpiece-9 {
-            transform: translate(40px, -42px);
+            transform: translate(26px, -53px);
           }
         }
 
         &__bag {
-          transform: translate(40px, -28px);
+          transform: translate(17px, 73px);
 
-          &--headpiece-3 {
+          &--body-1--bag-2 {
+            transform: translate(25px, 73px);
+          }
+
+          &--body-1--bag-3 {
             transform: translate(55px, -35px);
           }
 
-          &--headpiece-6 {
-            transform: translate(40px, 2px);
-          }
-
-          &--headpiece-7 {
-            transform: translate(40px, 11px);
-          }
-
-          &--headpiece-8 {
-            transform: translate(40px, -45px);
-          }
-
-          &--headpiece-9 {
-            transform: translate(40px, -42px);
+          &--body-1--bag-4 {
+            transform: translate(-38px, 277px);
           }
         }
 
         &__accessibility-item {
           &--accessibility-item-1 {
-            transform: translate(103px, 40px);
+            transform: translate(90px, 24px);
           }
 
-          &--body-1 {
-            &--accessibility-item-1 {
-              transform: translate(13px, 130px);
-            }
+          &--body-1--accessibility-item-1 {
+            transform: translate(-19px, 107px);
+          }
 
-            &--accessibility-item-2 {
-              transform: translate(0, 110px);
-            }
+          &--body-1--accessibility-item-2 {
+            transform: translate(-12px, 92px);
+          }
 
-            &--accessibility-item-3 {
-              transform: translate(12px, 99px);
-            }
+          &--body-1--accessibility-item-3 {
+            transform: translate(0px, 79px);
+          }
 
-            &--accessibility-item-4 {
-              transform: translate(110px, 152px);
-            }
+          &--body-1--accessibility-item-4 {
+            transform: translate(98px, 137px);
+          }
 
-            &--accessibility-item-5 {
-              transform: translate(12px, 80px);
-            }
+          &--body-1--accessibility-item-5 {
+            transform: translate(-2px, 65px);
+          }
 
-            &--accessibility-item-6 {
-              transform: translate(108px, 150px);
-            }
+          &--body-1--accessibility-item-6 {
+            transform: translate(95px, 135px);
+          }
 
-            &--accessibility-item-7 {
-              transform: translate(37px, 292px);
-            }
+          &--body-1--accessibility-item-7 {
+            transform: translate(24px, 275px);
+          }
 
-            &--accessibility-item-8 {
-              transform: translate(86px, 292px);
-            }
+          &--body-1--accessibility-item-8 {
+            transform: translate(73px, 275px);
+          }
 
-            &--accessibility-item-9 {
-              transform: translate(86px, 292px);
-            }
+          &--body-1--accessibility-item-9 {
+            transform: translate(86px, 292px);
           }
         }
 
@@ -274,17 +264,17 @@ watch(
           &--soccer-1,
           &--soccer-2,
           &--soccer-3 {
-            transform: translate(-15px, 27px);
+            transform: translate(-27px, 6px);
           }
 
           &--soccer-4,
           &--soccer-5 {
-            transform: translate(13px, 60px);
+            transform: translate(-3px, 50px);
           }
 
           &--soccer-6,
           &--soccer-7 {
-            transform: translate(130px, 320px);
+            transform: translate(115px, 304px);
           }
         }
       }
