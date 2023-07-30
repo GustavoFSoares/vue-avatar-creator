@@ -9,29 +9,22 @@ export const useAvatarStore = defineStore({
   id: 'avatar',
   state: () => ({
     avatarConfiguration: {
-      'accessibility-item': {
-        shape: 'body-3--accessibility-item-2',
-        fillColor: '#0E202D',
-      },
-      bag: { shape: 'body-3--bag-2', fillColor: '#0E202D' },
-      beard: { shape: 'beard-2', fillColor: '#0E202D' },
-      body: { shape: 'body-3', fillColor: '#0E202D' },
-      coat: { shape: 'body-3--coat-2', fillColor: '#0E202D' },
-      dress: { shape: 'body-3--dress-3', fillColor: '#0E202D' },
-      face: { shape: 'face-2', fillColor: '#0E202D' },
-      gedgets: [{ shape: 'gedgets-2', fillColor: '#0E202D' }] as IWidget<
-        typeof GedgetsShape
-      >[],
-      glasses: { shape: 'glasses-2', fillColor: '#0E202D' },
-      headpiece: { shape: 'headpiece-8', fillColor: '#0E202D' },
-      hair: { shape: 'hair-10', fillColor: '#0E202D' },
-      necklace: { shape: 'body-3--necklace-3', fillColor: '#0E202D' },
-      pant: { shape: 'body-3--pant-3', fillColor: '#0E202D' },
-      shoe: { shape: 'body-3--shoe-8', fillColor: '#0E202D' },
-      soccer: [{ shape: 'body-3--soccer-2', fillColor: '#0E202D' }] as IWidget<
-        typeof SoccerShape
-      >[],
-      tshirt: { shape: 'body-3--tshirt-10', fillColor: '#0E202D' },
+      'accessibility-item': null,
+      bag: null,
+      beard: null,
+      body: { shape: 'body-4', fillColor: '#0E202D' },
+      coat: null,
+      dress: null,
+      face: null,
+      gedgets: [] as IWidget<typeof GedgetsShape>[],
+      glasses: null,
+      headpiece: null,
+      hair: null,
+      necklace: null,
+      pant: null,
+      shoe: null,
+      soccer: [] as IWidget<typeof SoccerShape>[],
+      tshirt: null,
     } as AvatarWidgets,
   }),
   getters: {
@@ -44,21 +37,57 @@ export const useAvatarStore = defineStore({
 
       return body.shape;
     },
-    items(state): AvatarWidgets {
-      return state.avatarConfiguration;
+    items(state) {
+      const itemsKeys: any[] = Object.keys(state.avatarConfiguration);
+
+      return itemsKeys.reduce((amount, itemKey) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        const item = state.avatarConfiguration[itemKey];
+        if (item === undefined || !item) {
+          return amount;
+        }
+
+        if (Array.isArray(item)) {
+          const mappedItem = item.map((currentItem) => ({
+            ...currentItem,
+            type: itemKey,
+          }));
+
+          amount = [...amount, ...mappedItem];
+        } else {
+          amount.push({
+            ...item,
+            type: itemKey,
+          });
+        }
+
+        return amount;
+      }, []);
     },
-    // items: (state): Array<{ name: string; amount: number }> =>
-    //   state.rawItems.reduce((items, item) => {
-    //     const existingItem = items.find((it) => it.name === item);
-    //     if (!existingItem) {
-    //       items.push({ name: item, amount: 1 });
-    //     } else {
-    //       existingItem.amount++;
-    //     }
-    //     return items;
-    //   }, [] as Array<{ name: string; amount: number }>),
   },
   actions: {
+    clearSelections() {
+      Object.keys(this.avatarConfiguration).forEach((itemKey) => {
+        if (itemKey === 'body') {
+          return;
+        }
+
+        if (['soccer', 'gedgets'].includes(itemKey)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          this.avatarConfiguration[itemKey] = [];
+
+          return;
+        }
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        this.avatarConfiguration[itemKey] = null;
+      });
+
+      console.log(this.avatarConfiguration);
+    },
     addWidget(item: WidgetType, shape: string) {
       if (this.avatarConfiguration[item] === undefined) {
         throw new Error(`Error trying add item "${item}"`);
@@ -79,7 +108,11 @@ export const useAvatarStore = defineStore({
         this.avatarConfiguration[item] = widgetData;
       }
 
-      console.log(this.avatarConfiguration);
+      if (item === 'body') {
+        this.clearSelections();
+      }
+
+      // console.log(this.avatarConfiguration);
     },
     removeWidget(item: WidgetType, shape: string) {
       if (!this.avatarConfiguration[item]) {
@@ -100,7 +133,7 @@ export const useAvatarStore = defineStore({
         this.avatarConfiguration[item] = null;
       }
 
-      console.log(this.avatarConfiguration);
+      // console.log(this.avatarConfiguration);
     },
     selectWidgetColor(item: WidgetType, color: string) {
       if (!this.avatarConfiguration[item]) {
@@ -124,7 +157,7 @@ export const useAvatarStore = defineStore({
         }
       }
 
-      console.log(this.avatarConfiguration[item]);
+      // console.log(this.avatarConfiguration[item]);
     },
   },
 });

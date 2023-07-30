@@ -21,92 +21,76 @@ import {
 // import type { AvatarOption, AvatarSettings } from '../types'
 
 interface AvatarSpecification {
-  zIndex: number;
   allowMultiple: boolean;
   byBody: boolean;
   cantRemove?: boolean;
 }
+
 export const AVATAR_SPECIFICATION: Readonly<{
   [key in `${WidgetType}`]: AvatarSpecification;
 }> = {
   [WidgetType.AccessibilityItemShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.BagShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.BeardShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.BodyShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
     cantRemove: true,
   },
   [WidgetType.CoatShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.DressShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.FaceShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.GedgetsShape]: {
-    zIndex: 0,
     allowMultiple: true,
     byBody: false,
   },
   [WidgetType.GlassesShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.HeadpieceShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.HairShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: false,
   },
   [WidgetType.NecklaceShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.PantShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.ShoeShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
   [WidgetType.SoccerShape]: {
-    zIndex: 0,
     allowMultiple: true,
     byBody: true,
   },
   [WidgetType.TshirtShape]: {
-    zIndex: 0,
     allowMultiple: false,
     byBody: true,
   },
