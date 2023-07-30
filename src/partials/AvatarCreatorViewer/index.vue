@@ -103,6 +103,10 @@ watch(
 
 <style lang="scss" scoped>
 .avatar-preview {
+  min-width: 305px;
+  min-height: 300px;
+  max-width: 305px;
+
   :deep {
     content: '';
 

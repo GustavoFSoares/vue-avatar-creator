@@ -4,7 +4,7 @@
       <div class="app-container__content">
         <main class="main-page">
           <aside class="avatar-preview">
-            <AvatarViewer />
+            <AvatarCreatorViewer />
           </aside>
 
           <section ref="avatarSelectorRef" class="avatar-selector">
@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import AvatarViewer from './components/AvatarViewer/index.vue';
+import AvatarCreatorViewer from './partials/AvatarCreatorViewer/index.vue';
 import WidgetList from './components/WidgetList/index.vue';
 import WidgetOptionList from './components/WidgetOptionList/index.vue';
 
@@ -74,9 +74,6 @@ onMounted(() => {
   gap: 35px;
 
   .avatar-preview {
-    min-width: 305px;
-    min-height: 300px;
-    max-width: 305px;
   }
 
   .avatar-selector {
