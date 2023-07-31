@@ -14,6 +14,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'avatar-creator-widgets': fileURLToPath(
+        new URL('./src/assets/widget-options', import.meta.url)
+      ),
       vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
@@ -24,12 +27,13 @@ export default defineConfig({
       fileName: (format) => `${ProjectName}.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'pinia'],
       output: {
         // Provide global variables to use in the UMD build
         // Add external deps here
         globals: {
-          vue: 'vue/dist/vue.esm-bundler.js',
+          vue: 'Vue',
+          pinia: 'pinia',
         },
       },
     },

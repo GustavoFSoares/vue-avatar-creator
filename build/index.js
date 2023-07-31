@@ -1,20 +1,17 @@
-export { default as HelloWorld} from '@/components/HelloWorld.vue';
-export { default as TheWelcome} from '@/components/TheWelcome.vue';
+import { createPinia } from 'pinia';
 
-export const defaultAvatar = {
-  widgets: {
-    ear: { shape: 'detached' },
-    eyes: { shape: 'ellipse' },
-    face: { shape: 'base' },
-    nose: { shape: 'curve' },
-    tops: { shape: 'clean', fillColor: '#6BD9E9' },
-    beard: { shape: 'none', zIndex: 99 },
-    mouth: { shape: 'smirk' },
-    clothes: { shape: 'crew', fillColor: '#6BD9E9' },
-    glasses: { shape: 'none' },
-    earrings: { shape: 'none' },
-    eyebrows: { shape: 'up' }
+import AvatarCreatorOptions from '@/partials/AvatarCreatorOptions/index.vue';
+import AvatarCreatorViewer from '@/partials/AvatarCreatorViewer/index.vue';
+
+export const AvatarCreatorOptionsComponent = AvatarCreatorOptions;
+export const AvatarCreatorViewerComponent = AvatarCreatorViewer;
+
+export default {
+  install(app, options) {
+    console.log('HERE');
+    app.use(createPinia());
+
+    app.component(AvatarCreatorOptions);
+    app.component(AvatarCreatorViewer);
   },
-  background: { color: '#E0DDFF' },
-  wrapperShape: 'squircle'
 };

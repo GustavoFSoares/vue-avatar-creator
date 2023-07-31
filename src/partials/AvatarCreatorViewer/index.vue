@@ -43,7 +43,7 @@ const buildAvatar = async (avatarOption) => {
 
   const shapesPromises = preparedBuildOrder.map(({ shape, type }) => {
     const svgContent = import(
-      `/src/assets/widget-options/${type}/${shape}.svg?raw`
+      `../../assets/widget-options/${type}/${shape}.svg?raw`
     );
 
     return svgContent;
