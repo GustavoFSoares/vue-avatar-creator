@@ -159,5 +159,8 @@ export const useAvatarStore = defineStore({
 
       // console.log(this.avatarConfiguration[item]);
     },
+    setAvatar(avatarConfiguration: AvatarWidgets) {
+      this.avatarConfiguration = { ...avatarConfiguration };
+    },
   },
 });

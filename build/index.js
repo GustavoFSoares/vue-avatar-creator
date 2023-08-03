@@ -1,14 +1,15 @@
 import { createPinia } from 'pinia';
 
-import AvatarCreatorOptions from '@/partials/AvatarCreatorOptions/index.vue';
-import AvatarCreatorViewer from '@/partials/AvatarCreatorViewer/index.vue';
+import AvatarCreatorOptionsComponent from '@/partials/AvatarCreatorOptions/index.vue';
+import AvatarCreatorViewerComponent from '@/partials/AvatarCreatorViewer/index.vue';
+import { useAvatarStore } from '@/stores/avatar.ts';
 
-export const AvatarCreatorOptionsComponent = AvatarCreatorOptions;
-export const AvatarCreatorViewerComponent = AvatarCreatorViewer;
+export const AvatarCreatorOptions = AvatarCreatorOptionsComponent;
+export const AvatarCreatorViewer = AvatarCreatorViewerComponent;
+export const useAvatarCreatorStore = useAvatarStore;
 
 export default {
   install(app, options) {
-    console.log('HERE');
     app.use(createPinia());
 
     app.component(AvatarCreatorOptions);
