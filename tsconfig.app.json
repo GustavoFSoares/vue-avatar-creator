@@ -6,7 +6,8 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "avatar-creator-widgets/*": ["./src/assets/widget-options"]
     }
   }
 }

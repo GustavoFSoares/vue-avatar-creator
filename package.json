@@ -1,10 +1,11 @@
 {
   "name": "vue-avatar-creator",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.5",
+  "private": false,
+  "main": "dist/vue-avatar-creator.es.js",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "run-p build-only",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -14,8 +15,7 @@
   },
   "dependencies": {
     "pinia": "^2.1.4",
-    "swiper": "^10.0.3",
-    "vue": "^3.3.4"
+    "swiper": "^10.0.3"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
@@ -38,6 +38,7 @@
     "vite": "^4.3.9",
     "vite-svg-loader": "^4.0.0",
     "vitest": "^0.32.0",
+    "vue": "^3.3.4",
     "vue-tsc": "^1.6.5"
   }
 }

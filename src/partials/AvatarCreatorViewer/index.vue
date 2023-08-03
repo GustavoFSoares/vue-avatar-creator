@@ -43,7 +43,7 @@ const buildAvatar = async (avatarOption) => {
 
   const shapesPromises = preparedBuildOrder.map(({ shape, type }) => {
     const svgContent = import(
-      `/src/assets/widget-options/${type}/${shape}.svg?raw`
+      `../../assets/widget-options/${type}/${shape}.svg?raw`
     );
 
     return svgContent;
@@ -103,6 +103,10 @@ watch(
 
 <style lang="scss" scoped>
 .avatar-preview {
+  min-width: 305px;
+  min-height: 300px;
+  max-width: 305px;
+
   :deep {
     content: '';
 

@@ -82,7 +82,7 @@ const handleClick = () => {
 
 onMounted(async () => {
   const svgContent = await import(
-    `/src/assets/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
+    `../../assets/widget-options/${props.widgetGroup}/${props.item}.svg?raw`
   );
 
   svgData.value = svgContent.default;
@@ -106,7 +106,7 @@ onMounted(async () => {
   justify-items: center;
 
   &--used {
-    background-image: url(/assets/avatar/circle.png);
+    background-image: url('@/assets/avatar/circle.png');
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: 10px;
