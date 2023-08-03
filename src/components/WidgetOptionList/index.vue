@@ -173,14 +173,37 @@ watch(
   display: flex;
   color: black;
 
-  padding: 16px 24px 68px;
+  padding: 16px 24px 0;
 
   position: relative;
+  max-height: 384px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin: 5px;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b9b6b6;
+    border-radius: 1200px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #948f8f;
+  }
 
   &__options {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+
+    height: 100%;
+    padding-bottom: 68px;
   }
 
   &__color-palette {
