@@ -6,12 +6,26 @@
 import { watch, ref } from 'vue';
 import { useAvatarStore } from '@/stores/avatar.ts';
 
+import mapAvatarConfigurator from '@/hooks/avatarHelper';
+
 const avatarStore = useAvatarStore();
 
 const props = defineProps({
-  size: {
+  width: {
+    type: Number,
+    default: 300,
+  },
+  height: {
     type: Number,
     default: 500,
+  },
+  viewMode: {
+    type: Boolean,
+    default: false,
+  },
+  data: {
+    type: Object,
+    default: null,
   },
 });
 
@@ -78,9 +92,9 @@ const buildAvatar = async (avatarOption) => {
 
   return `
     <svg
-      width="${300}"
-      height="${500}"
-      viewBox="0 0 300 500"
+      width="${props.width}"
+      height="${props.height}"
+      viewBox="0 0 ${props.width} ${props.height}"
       preserveAspectRatio="xMidYMax meet"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -93,9 +107,17 @@ const buildAvatar = async (avatarOption) => {
 };
 
 watch(
-  () => avatarStore.items,
-  async () => {
-    svgContent.value = await buildAvatar(avatarStore.items);
+  () => {
+    if (!props.viewMode) {
+      return avatarStore.items;
+    }
+
+    return props.data;
+  },
+  async (avatarData) => {
+    const avatarItens = mapAvatarConfigurator(avatarData);
+
+    svgContent.value = await buildAvatar(avatarItens);
   },
   { immediate: true, deep: true }
 );

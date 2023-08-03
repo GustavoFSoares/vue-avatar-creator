@@ -16,7 +16,10 @@
     <div v-else>{{ item }}</div>
 
     <div class="widget-option-list-item__action-button">
-      {{ item }}
+      <div class="widget-option-list-item__debug">
+        {{ item }}
+      </div>
+
       <span
         v-if="selected || used"
         :class="[
