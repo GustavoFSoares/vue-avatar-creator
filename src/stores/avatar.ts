@@ -6,6 +6,25 @@ import { COLOR_OPTIONS } from '@/utils/constant';
 import type { GedgetsShape, SoccerShape } from '@/enums';
 import { type WidgetType } from '@/enums';
 
+export const defaultAvatar = {
+  'accessibility-item': null,
+  bag: null,
+  beard: null,
+  body: { shape: 'body-1', fillColor: '#0E202D' },
+  coat: null,
+  dress: null,
+  face: null,
+  gedgets: [] as IWidget<typeof GedgetsShape>[],
+  glasses: null,
+  headpiece: null,
+  hair: null,
+  necklace: null,
+  pant: null,
+  shoe: null,
+  soccer: [] as IWidget<typeof SoccerShape>[],
+  tshirt: null,
+};
+
 export const useAvatarStore = defineStore({
   id: 'avatar',
   state: () => ({
@@ -13,7 +32,7 @@ export const useAvatarStore = defineStore({
       'accessibility-item': null,
       bag: null,
       beard: null,
-      body: { shape: 'body-4', fillColor: '#0E202D' },
+      body: { shape: 'body-1', fillColor: '#0E202D' },
       coat: null,
       dress: null,
       face: null,
