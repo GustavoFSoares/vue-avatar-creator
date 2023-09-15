@@ -673,11 +673,12 @@ watch(
         }
 
         &__face {
+          // transform: translate(54px, 12px);
           transform: translate(54px, 12px);
         }
 
         &__glasses {
-          transform: translate(49px, 17px);
+          transform: translate(49px, 12px);
         }
 
         &__necklace {
@@ -886,6 +887,106 @@ watch(
           &--soccer-6,
           &--soccer-7 {
             transform: translate(130px, 307px);
+          }
+        }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(24px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(24px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(24px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(24px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(24px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(24px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(24px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(33px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(20px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(21px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(24px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(24px, -16px);
+          }
+
+          &--hair-6 {
+            transform: translate(24px, -20px);
+          }
+
+          &--hair-7 {
+            transform: translate(26px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(24px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(24px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(49px, 22px);
+          }
+
+          &--beard-2 {
+            transform: translate(49px, 26px);
+          }
+
+          &--beard-3 {
+            transform: translate(49px, 20px);
+          }
+
+          &--beard-4 {
+            transform: translate(49px, 19px);
+          }
+
+          &--beard-5 {
+            transform: translate(49px, 22px);
+          }
+
+          &--beard-6 {
+            transform: translate(49px, 17px);
+          }
+
+          &--beard-7 {
+            transform: translate(49px, 19px);
+          }
+
+          &--beard-8 {
+            transform: translate(49px, 29px);
           }
         }
       }
