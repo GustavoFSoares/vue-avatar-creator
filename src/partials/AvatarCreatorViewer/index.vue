@@ -34,13 +34,15 @@ const svgContent = ref(null);
 const buildAvatar = async (avatarOption) => {
   const buildOrder = [
     'body',
-    'face',
-    'pant',
-    'shoe',
     'tshirt',
     'dress',
-    'soccer',
     'coat',
+    'hair',
+    'face',
+    'beard',
+    'pant',
+    'shoe',
+    'soccer',
     'necklace',
     'glasses',
     'gedgets',
@@ -132,6 +134,12 @@ watch(
   :deep {
     content: '';
 
+    .avatar-item__beard {
+      #face {
+        display: none;
+      }
+    }
+
     .avatar-body__body-1 {
       &.avatar-item {
         &__coat {
@@ -143,11 +151,11 @@ watch(
         }
 
         &__face {
-          transform: translate(45px, 12px);
+          transform: translate(44px, 8px);
         }
 
         &__glasses {
-          transform: translate(39px, 18px);
+          transform: translate(38px, 13px);
         }
 
         &__necklace {
@@ -301,6 +309,106 @@ watch(
           &--soccer-6,
           &--soccer-7 {
             transform: translate(115px, 304px);
+          }
+        }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(14px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(14px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(14px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(14px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(14px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(14px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(14px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(23px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(10px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(11px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(14px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(14px, -16px);
+          }
+
+          &--hair-6 {
+            transform: translate(14px, -19px);
+          }
+
+          &--hair-7 {
+            transform: translate(16px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(14px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(14px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(39px, 22px);
+          }
+
+          &--beard-2 {
+            transform: translate(39px, 26px);
+          }
+
+          &--beard-3 {
+            transform: translate(39px, 20px);
+          }
+
+          &--beard-4 {
+            transform: translate(39px, 19px);
+          }
+
+          &--beard-5 {
+            transform: translate(39px, 22px);
+          }
+
+          &--beard-6 {
+            transform: translate(39px, 17px);
+          }
+
+          &--beard-7 {
+            transform: translate(39px, 19px);
+          }
+
+          &--beard-8 {
+            transform: translate(39px, 29px);
           }
         }
       }
