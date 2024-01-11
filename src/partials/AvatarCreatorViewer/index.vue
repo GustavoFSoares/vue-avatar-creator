@@ -204,7 +204,7 @@ watch(
           }
 
           &--body-1--bag-3 {
-            transform: translate(55px, -35px);
+            transform: translate(5px, 73px);
           }
 
           &--body-1--bag-4 {
