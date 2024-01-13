@@ -151,7 +151,7 @@ watch(
         }
 
         &__face {
-          transform: translate(44px, 8px);
+          transform: translate(44px, 13px);
         }
 
         &__glasses {

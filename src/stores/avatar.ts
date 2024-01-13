@@ -1,6 +1,11 @@
 import { defineStore } from 'pinia';
 
-import type { AvatarWidgets, IWidget } from '@/types';
+import type {
+  AvatarWidgets,
+  IWidget,
+  IWidgetOption,
+  AvailableColors,
+} from '@/types';
 import { COLOR_OPTIONS } from '@/utils/constant';
 
 import type { GedgetsShape, SoccerShape } from '@/enums';
@@ -32,14 +37,14 @@ export const useAvatarStore = defineStore({
       'accessibility-item': null,
       bag: null,
       beard: null,
-      body: { shape: 'body-1', fillColor: '#0E202D' },
+      body: { shape: 'body-1', fillColor: '#0E202D' as any as AvailableColors },
       coat: null,
       dress: null,
       face: null,
       gedgets: [] as IWidget<typeof GedgetsShape>[],
       glasses: null,
       headpiece: null,
-      hair: null,
+      hair: { shape: 'hair-1', fillColor: '#9B2FAE' as any as AvailableColors },
       necklace: null,
       pant: null,
       shoe: null,
@@ -83,7 +88,7 @@ export const useAvatarStore = defineStore({
 
       console.log(this.avatarConfiguration);
     },
-    addWidget(item: WidgetType, shape: string) {
+    addWidget(item: WidgetType, shape: IWidgetOption) {
       if (this.avatarConfiguration[item] === undefined) {
         throw new Error(`Error trying add item "${item}"`);
       }
@@ -91,8 +96,8 @@ export const useAvatarStore = defineStore({
       const [firstColor] = COLOR_OPTIONS;
 
       const widgetData: IWidget<string> = {
-        shape,
-        fillColor: firstColor,
+        shape: shape.item,
+        fillColor: shape.color,
       };
 
       if (item === 'soccer' || item === 'gedgets') {
@@ -130,7 +135,7 @@ export const useAvatarStore = defineStore({
 
       // console.log(this.avatarConfiguration);
     },
-    selectWidgetColor(item: WidgetType, color: string) {
+    selectWidgetColor(item: WidgetType, color: AvailableColors) {
       if (!this.avatarConfiguration[item]) {
         throw new Error(`Error trying find item "${item}"`);
       }

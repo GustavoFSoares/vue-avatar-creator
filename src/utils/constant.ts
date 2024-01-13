@@ -300,7 +300,7 @@ export const COLOR_OPTIONS = [
   '#617D8A',
   '#465A63',
   '#37474F',
-];
+] as const;
 
 export const NOT_COMPATIBLE_AGENTS = [
   'quark',

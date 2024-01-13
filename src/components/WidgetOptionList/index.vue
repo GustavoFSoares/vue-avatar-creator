@@ -1,18 +1,20 @@
 <template>
   <section class="widget-option-list">
-    <div class="widget-option-list__options">
-      <WidgetOptionListItem
-        v-for="(widgetOption, widgetOptionIndex) in avatarOptions"
-        :key="widgetOption.item"
-        :item="widgetOption.item"
-        :widget-group="currentWidget"
-        :selected="selectedOption === widgetOption.item"
-        :used="widgetOption.selected"
-        :cant-remove="itemCantRemove"
-        @add="handleAddItem(widgetOption.item, widgetOptionIndex)"
-        @remove="handleRemoveItem(widgetOption.item, widgetOptionIndex)"
-        @select="handleSelect(widgetOption.item)"
-      />
+    <div class="widget-option-list__container">
+      <div class="widget-option-list__options">
+        <WidgetOptionListItem
+          v-for="(widgetOption, widgetOptionIndex) in avatarOptions"
+          :key="widgetOption.item"
+          :item="widgetOption.item"
+          :widget-group="currentWidget"
+          :selected="selectedOption?.item === widgetOption.item"
+          :used="widgetOption.selected"
+          :cant-remove="itemCantRemove"
+          @add="handleAddItem(widgetOption, widgetOptionIndex)"
+          @remove="handleRemoveItem(widgetOption.item, widgetOptionIndex)"
+          @select="handleSelect(widgetOption)"
+        />
+      </div>
     </div>
 
     <div v-if="showColorPalette" class="widget-option-list__color-palette">
@@ -21,13 +23,17 @@
         :key="colorOption"
         :class="[
           'widget-option-list__color-palette-item',
-          { 'widget-option-list__color-palette-item--selected': false },
+          {
+            'widget-option-list__color-palette-item--selected':
+              selectedOption?.color === colorOption,
+          },
           `widget-option-list__color-palette-item--${colorOption.replace(
             '#',
             ''
           )}`,
         ]"
         :style="`background-color: ${colorOption}`"
+        @click="handleSelectColor(colorOption)"
       />
     </div>
   </section>
@@ -43,8 +49,11 @@ import {
   COLOR_OPTIONS,
   AVATAR_SPECIFICATION,
 } from '@/utils/constant.ts';
+import type { IWidgetOption } from '@/types';
 
 import WidgetOptionListItem from '../WidgetOptionListItem/index.vue';
+
+const DEFAULT_COLOR = '#9B2FAE';
 
 const props = defineProps({
   currentWidget: {
@@ -55,7 +64,7 @@ const props = defineProps({
 
 const avatarStore = useAvatarStore();
 
-const usedOptions = ref([]);
+const usedOptions = ref(['hair']);
 const selectedOption = ref(null);
 const showColorPalette = ref(false);
 
@@ -70,30 +79,27 @@ const itemCantRemove = computed(
   () => AVATAR_SPECIFICATION[props.currentWidget].cantRemove
 );
 
-const handleAddItem = (item: string, index: number) => {
-  avatarStore.addWidget(props.currentWidget, item);
-
+const handleAddItem = (widgetOption: IWidgetOption, index: number) => {
+  avatarStore.addWidget(props.currentWidget, widgetOption);
   if (!allowMultipleItems.value) {
     avatarOptions.value.forEach((avatarOption) => {
       avatarOption.selected = false;
     });
   }
-
   avatarOptions.value[index].selected = true;
 
-  handleShowColorPalette(item);
+  handleShowColorPalette();
 };
 
 const handleRemoveItem = (item: string, index: number) => {
   avatarStore.removeWidget(props.currentWidget, item);
   avatarOptions.value[index].selected = false;
-
   handleHideColorPalette();
 };
 
 const handleSelect = (item) => {
   selectedOption.value = item;
-  handleShowColorPalette(item);
+  handleHideColorPalette();
 };
 
 const getSelectedOptions = () => {
@@ -101,6 +107,8 @@ const getSelectedOptions = () => {
     (widgetItem) => ({
       item: widgetItem,
       selected: false,
+      widgetType: props.currentWidget,
+      color: DEFAULT_COLOR,
     })
   );
 
@@ -145,8 +153,8 @@ const getSelectedOptions = () => {
   }
 };
 
-const handleShowColorPalette = (item) => {
-  if (usedOptions.value.includes(item)) {
+const handleShowColorPalette = () => {
+  if (usedOptions.value.includes(selectedOption.value.widgetType)) {
     showColorPalette.value = true;
   } else {
     handleHideColorPalette();
@@ -154,6 +162,11 @@ const handleShowColorPalette = (item) => {
 };
 const handleHideColorPalette = () => {
   showColorPalette.value = false;
+};
+
+const handleSelectColor = (color: string) => {
+  avatarStore.selectWidgetColor(selectedOption.value.widgetType, color);
+  selectedOption.value.color = color;
 };
 
 watch(
@@ -168,16 +181,19 @@ watch(
 
 <style lang="scss" scoped>
 .widget-option-list {
-  background: #fff;
-  border-radius: 8px;
-  display: flex;
-  color: black;
-
-  padding: 16px 24px 0;
-
   position: relative;
-  max-height: 384px;
-  overflow: auto;
+
+  &__container {
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    color: black;
+
+    padding: 16px 24px 0;
+
+    max-height: 384px;
+    overflow: auto;
+  }
 
   &::-webkit-scrollbar {
     width: 5px;
