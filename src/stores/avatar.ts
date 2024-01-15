@@ -44,7 +44,7 @@ export const useAvatarStore = defineStore({
       gedgets: [] as IWidget<typeof GedgetsShape>[],
       glasses: null,
       headpiece: null,
-      hair: { shape: 'hair-1', fillColor: '#9B2FAE' as any as AvailableColors },
+      hair: null,
       necklace: null,
       pant: null,
       shoe: null,
@@ -141,19 +141,31 @@ export const useAvatarStore = defineStore({
       }
 
       if (item === 'soccer' || item === 'gedgets') {
-        const widgetItem = this.avatarConfiguration[item].find(
+        const widgetItemIndex = this.avatarConfiguration[item].findIndex(
           (widgetItem) => widgetItem.shape === item
         );
 
+        if (widgetItemIndex === -1) {
+          return;
+        }
+
+        const widgetItem = this.avatarConfiguration[item][widgetItemIndex];
+
         if (widgetItem) {
-          widgetItem.fillColor = color;
+          this.avatarConfiguration[item][widgetItemIndex] = {
+            ...widgetItem,
+            fillColor: color,
+          };
         }
       }
 
       if (item !== 'soccer' && item !== 'gedgets') {
         const currentWidget = this.avatarConfiguration[item];
         if (currentWidget) {
-          currentWidget.fillColor = color;
+          this.avatarConfiguration[item] = {
+            ...currentWidget,
+            fillColor: color,
+          };
         }
       }
 

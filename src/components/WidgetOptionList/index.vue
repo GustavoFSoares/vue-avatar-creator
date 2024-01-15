@@ -12,7 +12,7 @@
           :cant-remove="itemCantRemove"
           @add="handleAddItem(widgetOption, widgetOptionIndex)"
           @remove="handleRemoveItem(widgetOption.item, widgetOptionIndex)"
-          @select="handleSelect(widgetOption)"
+          @select="handleSelect(widgetOption, widgetOption.selected)"
         />
       </div>
     </div>
@@ -53,7 +53,7 @@ import type { IWidgetOption } from '@/types';
 
 import WidgetOptionListItem from '../WidgetOptionListItem/index.vue';
 
-const DEFAULT_COLOR = '#9B2FAE';
+const DEFAULT_COLOR = '#5C2E2F';
 
 const props = defineProps({
   currentWidget: {
@@ -97,9 +97,14 @@ const handleRemoveItem = (item: string, index: number) => {
   handleHideColorPalette();
 };
 
-const handleSelect = (item) => {
+const handleSelect = (item, isSelected = false) => {
   selectedOption.value = item;
-  handleHideColorPalette();
+
+  if (isSelected) {
+    handleShowColorPalette();
+  } else {
+    handleHideColorPalette();
+  }
 };
 
 const getSelectedOptions = () => {

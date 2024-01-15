@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+import mix from 'mix-css-color';
 import { watch, ref } from 'vue';
 import { useAvatarStore } from '@/stores/avatar.ts';
 
@@ -77,10 +78,43 @@ const buildAvatar = async (avatarOption) => {
 
       svgRaw = svgRaw.default;
 
-      const content = svgRaw
+      let content = svgRaw
         .slice(svgRaw.indexOf('>', svgRaw.indexOf('<svg')) + 1)
         .replace('</svg>', '');
       // .replaceAll('$fillColor', widgetFillColor || 'transparent');
+
+      if (content.includes('current-color')) {
+        content = content
+          .split('\n')
+          .map((line) => {
+            if (line.includes('class="current-color"')) {
+              line = line.replace(
+                /fill="#(.){6}"/,
+                `fill="${shapeData.fillColor}"`
+              );
+
+              line = line.replace(
+                /stroke="#(.){6}"/,
+                `stroke="${shapeData.fillColor}"`
+              );
+            }
+
+            if (line.includes('class="current-color-dark"')) {
+              line = line.replace(
+                /fill="#(.){6}"/,
+                `fill="${mix(shapeData.fillColor, '#000').hex}"`
+              );
+
+              line = line.replace(
+                /stroke="#(.){6}"/,
+                `stroke="${mix(shapeData.fillColor, '#000').hex}"`
+              );
+            }
+
+            return line;
+          })
+          .join('\n');
+      }
 
       return `
         <g 
