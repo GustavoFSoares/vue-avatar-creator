@@ -64,7 +64,7 @@ const props = defineProps({
 
 const avatarStore = useAvatarStore();
 
-const usedOptions = ref(['hair']);
+const usedOptions = ref(['hair', 'beard']);
 const selectedOption = ref(null);
 const showColorPalette = ref(false);
 
