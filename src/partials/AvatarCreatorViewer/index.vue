@@ -36,12 +36,12 @@ const buildAvatar = async (avatarOption) => {
   const buildOrder = [
     'body',
     'tshirt',
+    'pant',
     'dress',
     'coat',
     'hair',
     'face',
     'beard',
-    'pant',
     'shoe',
     'soccer',
     'necklace',
@@ -164,6 +164,29 @@ watch(
   min-width: 305px;
   min-height: 300px;
   max-width: 305px;
+  position: relative;
+
+  // &:before {
+  //   position: absolute;
+  //   top: 97px;
+  //   left: 123px;
+  //   content: '';
+
+  //   background: red;
+  //   width: 100px;
+  //   height: 1px;
+  // }
+
+  // &:after {
+  //   position: absolute;
+  //   top: 41px;
+  //   left: 168px;
+  //   content: '';
+
+  //   background: red;
+  //   height: 100px;
+  //   width: 1px;
+  // }
 
   :deep {
     content: '';
@@ -185,11 +208,11 @@ watch(
         }
 
         &__face {
-          transform: translate(44px, 13px);
+          transform: translate(44px, 16px);
         }
 
         &__glasses {
-          transform: translate(38px, 13px);
+          transform: translate(38px, 21px);
         }
 
         &__necklace {
@@ -206,6 +229,23 @@ watch(
 
         &__tshirt {
           transform: translate(-3px, 58px);
+
+          &--body-1--tshirt-2,
+          &--body-1--tshirt-3 {
+            transform: translate(-5px, 58px);
+          }
+
+          &--body-1--tshirt-4 {
+            transform: translate(-4px, 57px);
+          }
+
+          &--body-1--tshirt-5 {
+            transform: translate(-4px, 58px);
+          }
+
+          &--body-1--tshirt-6 {
+            transform: translate(-5px, 59px);
+          }
         }
 
         &__gedgets {
@@ -268,7 +308,7 @@ watch(
           }
 
           &--body-1--bag-3 {
-            transform: translate(55px, -35px);
+            transform: translate(10px, 73px);
           }
 
           &--body-1--bag-4 {
