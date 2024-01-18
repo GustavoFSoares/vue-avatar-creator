@@ -1,3 +1,5 @@
+import type { COLOR_OPTIONS } from '@/utils/constant';
+import type { WidgetType } from '../enums';
 import {
   type AccessibilityItemShape,
   type BagShape,
@@ -17,10 +19,12 @@ import {
   type TshirtShape,
 } from '../enums';
 
+export type AvailableColors = typeof COLOR_OPTIONS;
+
 export interface IWidget<Shape> {
   shape: Shape | string;
   zIndex?: number;
-  fillColor: string;
+  fillColor: AvailableColors;
   strokeColor?: string;
 }
 
@@ -79,4 +83,11 @@ export type AvatarOptions = {
   shoe: string[];
   soccer: string[];
   tshirt: string[];
+};
+
+export type IWidgetOption = {
+  item: string;
+  selected: boolean;
+  widgetType: WidgetType;
+  color: AvailableColors;
 };

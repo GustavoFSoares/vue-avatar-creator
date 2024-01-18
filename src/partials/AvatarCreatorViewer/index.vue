@@ -3,15 +3,30 @@
 </template>
 
 <script setup lang="ts">
+import mix from 'mix-css-color';
 import { watch, ref } from 'vue';
 import { useAvatarStore } from '@/stores/avatar.ts';
+
+import mapAvatarConfigurator from '@/hooks/avatarHelper';
 
 const avatarStore = useAvatarStore();
 
 const props = defineProps({
-  size: {
+  width: {
+    type: Number,
+    default: 300,
+  },
+  height: {
     type: Number,
     default: 500,
+  },
+  viewMode: {
+    type: Boolean,
+    default: false,
+  },
+  data: {
+    type: Object,
+    default: null,
   },
 });
 
@@ -20,13 +35,15 @@ const svgContent = ref(null);
 const buildAvatar = async (avatarOption) => {
   const buildOrder = [
     'body',
-    'face',
     'pant',
-    'shoe',
     'tshirt',
+    'shoe',
     'dress',
-    'soccer',
     'coat',
+    'hair',
+    'face',
+    'beard',
+    'soccer',
     'necklace',
     'glasses',
     'gedgets',
@@ -61,10 +78,43 @@ const buildAvatar = async (avatarOption) => {
 
       svgRaw = svgRaw.default;
 
-      const content = svgRaw
+      let content = svgRaw
         .slice(svgRaw.indexOf('>', svgRaw.indexOf('<svg')) + 1)
         .replace('</svg>', '');
       // .replaceAll('$fillColor', widgetFillColor || 'transparent');
+
+      if (content.includes('current-color')) {
+        content = content
+          .split('\n')
+          .map((line) => {
+            if (line.includes('class="current-color"')) {
+              line = line.replace(
+                /fill="#(.){6}"/,
+                `fill="${shapeData.fillColor}"`
+              );
+
+              line = line.replace(
+                /stroke="#(.){6}"/,
+                `stroke="${shapeData.fillColor}"`
+              );
+            }
+
+            if (line.includes('class="current-color-dark"')) {
+              line = line.replace(
+                /fill="#(.){6}"/,
+                `fill="${mix(shapeData.fillColor, '#000').hex}"`
+              );
+
+              line = line.replace(
+                /stroke="#(.){6}"/,
+                `stroke="${mix(shapeData.fillColor, '#000').hex}"`
+              );
+            }
+
+            return line;
+          })
+          .join('\n');
+      }
 
       return `
         <g 
@@ -78,9 +128,9 @@ const buildAvatar = async (avatarOption) => {
 
   return `
     <svg
-      width="${300}"
-      height="${500}"
-      viewBox="0 0 300 500"
+      width="${props.width}"
+      height="${props.height}"
+      viewBox="0 0 ${props.width} ${props.height}"
       preserveAspectRatio="xMidYMax meet"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -93,9 +143,17 @@ const buildAvatar = async (avatarOption) => {
 };
 
 watch(
-  () => avatarStore.items,
-  async () => {
-    svgContent.value = await buildAvatar(avatarStore.items);
+  () => {
+    if (!props.viewMode) {
+      return avatarStore.items;
+    }
+
+    return props.data;
+  },
+  async (avatarData) => {
+    const avatarItens = mapAvatarConfigurator(avatarData);
+
+    svgContent.value = await buildAvatar(avatarItens);
   },
   { immediate: true, deep: true }
 );
@@ -106,9 +164,38 @@ watch(
   min-width: 305px;
   min-height: 300px;
   max-width: 305px;
+  position: relative;
+
+  // &:before {
+  //   position: absolute;
+  //   top: 99px;
+  //   left: 113px;
+  //   content: '';
+
+  //   background: red;
+  //   width: 100px;
+  //   height: 1px;
+  // }
+
+  // &:after {
+  //   position: absolute;
+  //   top: 41px;
+  //   left: 183px;
+  //   content: '';
+
+  //   background: red;
+  //   height: 100px;
+  //   width: 1px;
+  // }
 
   :deep {
     content: '';
+
+    .avatar-item__beard {
+      #face {
+        display: none;
+      }
+    }
 
     .avatar-body__body-1 {
       &.avatar-item {
@@ -121,11 +208,11 @@ watch(
         }
 
         &__face {
-          transform: translate(45px, 12px);
+          transform: translate(44px, 16px);
         }
 
         &__glasses {
-          transform: translate(39px, 18px);
+          transform: translate(38px, 21px);
         }
 
         &__necklace {
@@ -142,6 +229,23 @@ watch(
 
         &__tshirt {
           transform: translate(-3px, 58px);
+
+          &--body-1--tshirt-2,
+          &--body-1--tshirt-3 {
+            transform: translate(-5px, 58px);
+          }
+
+          &--body-1--tshirt-4 {
+            transform: translate(-4px, 57px);
+          }
+
+          &--body-1--tshirt-5 {
+            transform: translate(-4px, 58px);
+          }
+
+          &--body-1--tshirt-6 {
+            transform: translate(-5px, 59px);
+          }
         }
 
         &__gedgets {
@@ -204,7 +308,7 @@ watch(
           }
 
           &--body-1--bag-3 {
-            transform: translate(5px, 73px);
+            transform: translate(10px, 73px);
           }
 
           &--body-1--bag-4 {
@@ -281,13 +385,117 @@ watch(
             transform: translate(115px, 304px);
           }
         }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(14px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(14px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(14px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(14px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(14px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(14px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(14px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(23px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(10px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(11px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(14px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(14px, -16px);
+          }
+
+          &--hair-6 {
+            transform: translate(14px, -19px);
+          }
+
+          &--hair-7 {
+            transform: translate(16px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(14px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(14px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(39px, 22px);
+          }
+
+          &--beard-2 {
+            transform: translate(39px, 26px);
+          }
+
+          &--beard-3 {
+            transform: translate(39px, 20px);
+          }
+
+          &--beard-4 {
+            transform: translate(39px, 19px);
+          }
+
+          &--beard-5 {
+            transform: translate(39px, 22px);
+          }
+
+          &--beard-6 {
+            transform: translate(39px, 17px);
+          }
+
+          &--beard-7 {
+            transform: translate(39px, 19px);
+          }
+
+          &--beard-8 {
+            transform: translate(39px, 29px);
+          }
+        }
       }
     }
 
     .avatar-body__body-2 {
       &.avatar-item {
         &__coat {
-          transform: translate(20px, 63px);
+          transform: translate(19px, 64px);
+
+          &--body-2--coat-4 {
+            transform: translate(19px, 63px);
+          }
 
           &--body-2--coat-7,
           &--body-2--coat-8 {
@@ -303,7 +511,10 @@ watch(
             transform: translate(18px, 65px);
           }
 
-          &--body-2--dress-5,
+          &--body-2--dress-5 {
+            transform: translate(46px, 68px);
+          }
+
           &--body-2--dress-6,
           &--body-2--dress-7 {
             transform: translate(45px, 68px);
@@ -311,11 +522,31 @@ watch(
         }
 
         &__face {
-          transform: translate(48px, 12px);
+          transform: translate(47px, 12px);
+
+          &--face-3 {
+            transform: translate(47px, 13px);
+          }
+
+          &--face-4 {
+            transform: translate(47px, 15px);
+          }
+
+          &--face-5 {
+            transform: translate(47px, 18px);
+          }
+
+          &--face-6 {
+            transform: translate(47px, 14px);
+          }
+
+          &--face-7 {
+            // transform: translate(47px, 12px);
+          }
         }
 
         &__glasses {
-          transform: translate(43px, 17px);
+          transform: translate(43px, 18px);
         }
 
         &__necklace {
@@ -365,18 +596,39 @@ watch(
         }
 
         &__tshirt {
-          transform: translate(17px, 64px);
+          transform: translate(18px, 64px);
 
           &--body-2--tshirt-10,
           &--body-2--tshirt-11 {
             transform: translate(46px, 70px);
           }
 
-          &--body-2--tshirt-3,
-          &--body-2--tshirt-4,
-          &--body-2--tshirt-5,
-          &--body-2--tshirt-8 {
+          &--body-2--tshirt-2 {
+            transform: translate(18px, 65px);
+          }
+
+          &--body-2--tshirt-3 {
+            transform: translate(39px, 65px);
+          }
+
+          &--body-2--tshirt-4 {
             transform: translate(39px, 68px);
+          }
+
+          &--body-2--tshirt-5 {
+            transform: translate(40px, 66px);
+          }
+
+          &--body-2--tshirt-7 {
+            transform: translate(18px, 67px);
+          }
+
+          &--body-2--tshirt-8 {
+            transform: translate(40px, 68px);
+          }
+
+          &--body-2--tshirt-9 {
+            transform: translate(17.4px, 67.3px);
           }
         }
 
@@ -515,13 +767,123 @@ watch(
             transform: translate(130px, 190px);
           }
         }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(18px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(18px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(18px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(18px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(18px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(18px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(18px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(27px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(14px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(15px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(18px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(18px, -17px);
+          }
+
+          &--hair-6 {
+            transform: translate(18px, -20px);
+          }
+
+          &--hair-7 {
+            transform: translate(20px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(18px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(18px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(43px, 20px);
+          }
+
+          &--beard-2 {
+            transform: translate(43px, 25px);
+          }
+
+          &--beard-3 {
+            transform: translate(43px, 19px);
+          }
+
+          &--beard-4 {
+            transform: translate(43px, 17px);
+          }
+
+          &--beard-5 {
+            transform: translate(43px, 20px);
+          }
+
+          &--beard-6 {
+            transform: translate(43px, 15px);
+          }
+
+          &--beard-7 {
+            transform: translate(43px, 17px);
+          }
+
+          &--beard-8 {
+            transform: translate(43px, 27px);
+          }
+        }
       }
     }
 
     .avatar-body__body-3 {
       &.avatar-item {
         &__coat {
-          transform: translate(2px, 64px);
+          transform: translate(2px, 62px);
+
+          &--body-3--coat-2,
+          &--body-3--coat-5 {
+            transform: translate(3px, 61px);
+          }
+
+          &--body-3--coat-7,
+          &--body-3--coat-4 {
+            transform: translate(3px, 63px);
+          }
         }
 
         &__dress {
@@ -544,6 +906,15 @@ watch(
 
         &__face {
           transform: translate(54px, 12px);
+
+          &--face-4,
+          &--face-6 {
+            transform: translate(54px, 15px);
+          }
+
+          &--face-5 {
+            transform: translate(54px, 18px);
+          }
         }
 
         &__glasses {
@@ -591,7 +962,7 @@ watch(
 
           &--body-3--shoe-7,
           &--body-3--shoe-8 {
-            transform: translate(27px, 278px);
+            transform: translate(28px, 278px);
           }
         }
 
@@ -629,7 +1000,7 @@ watch(
           }
 
           &--gedgets-3 {
-            transform: translate(33px, 46px);
+            transform: translate(33px, 55px);
           }
 
           &--gedgets-4 {
@@ -758,6 +1129,106 @@ watch(
             transform: translate(130px, 307px);
           }
         }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(24px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(24px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(24px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(24px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(24px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(24px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(24px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(33px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(20px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(21px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(24px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(24px, -17px);
+          }
+
+          &--hair-6 {
+            transform: translate(24px, -20px);
+          }
+
+          &--hair-7 {
+            transform: translate(26px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(24px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(24px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(49px, 22px);
+          }
+
+          &--beard-2 {
+            transform: translate(50px, 24px);
+          }
+
+          &--beard-3 {
+            transform: translate(50px, 20px);
+          }
+
+          &--beard-4 {
+            transform: translate(49.7px, 18px);
+          }
+
+          &--beard-5 {
+            transform: translate(49px, 22px);
+          }
+
+          &--beard-6 {
+            transform: translate(49px, 17px);
+          }
+
+          &--beard-7 {
+            transform: translate(50px, 18px);
+          }
+
+          &--beard-8 {
+            transform: translate(49px, 29px);
+          }
+        }
       }
     }
 
@@ -797,11 +1268,28 @@ watch(
         }
 
         &__face {
-          transform: translate(48px, 12px);
+          transform: translate(48px, 15px);
+
+          &--face-1 {
+            transform: translate(48px, 13px);
+          }
+
+          &--face-5 {
+            transform: translate(47px, 19px);
+          }
+
+          &--face-6,
+          &--face-7 {
+            transform: translate(47px, 15px);
+          }
+
+          &--face-8 {
+            transform: translate(47px, 15px);
+          }
         }
 
         &__glasses {
-          transform: translate(43px, 17px);
+          transform: translate(42px, 19px);
         }
 
         &__necklace {
@@ -857,26 +1345,37 @@ watch(
         &__tshirt {
           transform: translate(5px, 66px);
 
+          &--body-4--tshirt-2 {
+            transform: translate(5px, 69px);
+          }
+
           &--body-4--tshirt-10,
           &--body-4--tshirt-9 {
             transform: translate(33px, 72px);
           }
 
-          &--body-4--tshirt-3,
-          &--body-4--tshirt-5 {
-            transform: translate(31px, 68px);
+          &--body-4--tshirt-3 {
+            transform: translate(31px, 70px);
           }
 
           &--body-4--tshirt-4 {
+            transform: translate(6px, 70px);
+          }
+
+          &--body-4--tshirt-5 {
+            transform: translate(30px, 69px);
+          }
+
+          &--body-4--tshirt-6 {
             transform: translate(5px, 69px);
           }
 
           &--body-4--tshirt-7 {
-            transform: translate(31px, 72px);
+            transform: translate(30px, 71px);
           }
 
           &--body-4--tshirt-8 {
-            transform: translate(31px, 68px);
+            transform: translate(31px, 73px);
           }
         }
 
@@ -1015,13 +1514,141 @@ watch(
             transform: translate(130px, 190px);
           }
         }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(18px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(18px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(18px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(18px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(18px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(18px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(18px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(27px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(14px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(15px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(18px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(18px, -16px);
+          }
+
+          &--hair-6 {
+            transform: translate(18px, -20px);
+          }
+
+          &--hair-7 {
+            transform: translate(20px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(18px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(18px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(43px, 22px);
+          }
+
+          &--beard-2 {
+            transform: translate(43px, 26px);
+          }
+
+          &--beard-3 {
+            transform: translate(43px, 20px);
+          }
+
+          &--beard-4 {
+            transform: translate(43px, 19px);
+          }
+
+          &--beard-5 {
+            transform: translate(43px, 22px);
+          }
+
+          &--beard-6 {
+            transform: translate(43px, 17px);
+          }
+
+          &--beard-7 {
+            transform: translate(43px, 19px);
+          }
+
+          &--beard-8 {
+            transform: translate(43px, 29px);
+          }
+        }
       }
     }
 
     .avatar-body__body-5 {
       &.avatar-item {
         &__coat {
-          transform: translate(2px, 64px);
+          transform: translate(17px, 69px);
+
+          &--body-5--coat-2 {
+            transform: translate(17px, 67px);
+          }
+
+          &--body-5--coat-4 {
+            transform: translate(17px, 68px);
+          }
+
+          &--body-5--coat-5 {
+            transform: translate(16px, 67px);
+          }
+
+          &--body-5--coat-6 {
+            transform: translate(13px, 69px);
+          }
+
+          &--body-5--coat-6 {
+            transform: translate(13px, 69px);
+          }
+
+          &--body-5--coat-7 {
+            transform: translate(17px, 68px);
+          }
+
+          &--body-5--coat-8 {
+            transform: translate(15px, 68px);
+          }
         }
 
         &__dress {
@@ -1044,34 +1671,58 @@ watch(
         }
 
         &__face {
-          transform: translate(58px, 12px);
+          transform: translate(57px, 12px);
+
+          &--face-4 {
+            transform: translate(57px, 16px);
+          }
+
+          &--face-5 {
+            transform: translate(57px, 19px);
+          }
+
+          &--face-6 {
+            transform: translate(57px, 18px);
+          }
+
+          &--face-7 {
+            transform: translate(57px, 15px);
+          }
+
+          &--face-8 {
+            transform: translate(57px, 15px);
+          }
         }
 
         &__glasses {
-          transform: translate(53px, 17px);
+          transform: translate(53px, 20px);
         }
 
         &__necklace {
-          transform: translate(53px, 68px);
-
-          &--body-5--necklace-4,
-          &--body-5--necklace-8 {
-            transform: translate(61px, 68px);
+          &--body-5--necklace-1,
+          &--body-5--necklace-3,
+          &--body-5--necklace-4 {
+            transform: scale(0.8) translate(66px, 90px);
           }
 
+          &--body-5--necklace-2,
           &--body-5--necklace-5,
-          &--body-5--necklace-6,
-          &--body-5--necklace-7 {
-            transform: translate(46px, 67px);
+          &--body-5--necklace-6 {
+            transform: translate(55px, 69px);
+          }
+
+          &--body-5--necklace-7,
+          &--body-5--necklace-8 {
+            transform: translate(70px, 72px);
           }
         }
 
         &__pant {
-          transform: translate(56px, 164px);
+          transform: translate(58px, 164px);
 
           &--body-5--pant-7,
           &--body-5--pant-8 {
-            transform: translate(55px, 164px);
+            transform: translate(57px, 164px);
           }
         }
 
@@ -1093,7 +1744,7 @@ watch(
         }
 
         &__tshirt {
-          transform: translate(18px, 67px);
+          transform: translate(16px, 67px);
 
           &--body-5--tshirt-10,
           &--body-5--tshirt-9 {
@@ -1101,25 +1752,28 @@ watch(
           }
 
           &--body-5--tshirt-2 {
-            transform: translate(17px, 65px);
+            transform: translate(17px, 67px);
           }
 
           &--body-5--tshirt-3 {
             transform: translate(48px, 67px);
           }
 
-          &--body-5--tshirt-4,
-          &--body-5--tshirt-6 {
+          &--body-5--tshirt-4 {
             transform: translate(46px, 72px);
           }
 
           &--body-5--tshirt-5 {
-            transform: translate(48px, 70px);
+            transform: translate(48px, 67px);
+          }
+
+          &--body-5--tshirt-6 {
+            transform: translate(48px, 71px);
           }
 
           &--body-5--tshirt-7,
           &--body-5--tshirt-8 {
-            transform: translate(16px, 72px);
+            transform: translate(16px, 71px);
           }
         }
 
@@ -1245,6 +1899,106 @@ watch(
           &--soccer-6,
           &--soccer-7 {
             transform: translate(147px, 266px);
+          }
+        }
+
+        &__hair {
+          &--hair-1 {
+            transform: translate(28px, -20px);
+          }
+
+          &--hair-10 {
+            transform: translate(28px, -23px);
+          }
+
+          &--hair-11 {
+            transform: translate(28px, -23px);
+          }
+
+          &--hair-12 {
+            transform: translate(28px, -30px);
+          }
+
+          &--hair-13 {
+            transform: translate(28px, -23px);
+          }
+
+          &--hair-14 {
+            transform: translate(28px, -25px);
+          }
+
+          &--hair-15 {
+            transform: translate(28px, -28px);
+          }
+
+          &--hair-16 {
+            transform: translate(37px, -28px);
+          }
+
+          &--hair-2 {
+            transform: translate(24px, -24px);
+          }
+
+          &--hair-3 {
+            transform: translate(25px, -27px);
+          }
+
+          &--hair-4 {
+            transform: translate(28px, -16px);
+          }
+
+          &--hair-5 {
+            transform: translate(28px, -16px);
+          }
+
+          &--hair-6 {
+            transform: translate(28px, -19px);
+          }
+
+          &--hair-7 {
+            transform: translate(30px, -23px);
+          }
+
+          &--hair-8 {
+            transform: translate(28px, -25px);
+          }
+
+          &--hair-9 {
+            transform: translate(28px, -23px);
+          }
+        }
+
+        &__beard {
+          &--beard-1 {
+            transform: translate(53px, 22px);
+          }
+
+          &--beard-2 {
+            transform: translate(53px, 26px);
+          }
+
+          &--beard-3 {
+            transform: translate(53px, 20px);
+          }
+
+          &--beard-4 {
+            transform: translate(53px, 19px);
+          }
+
+          &--beard-5 {
+            transform: translate(53px, 22px);
+          }
+
+          &--beard-6 {
+            transform: translate(53px, 17px);
+          }
+
+          &--beard-7 {
+            transform: translate(53px, 19px);
+          }
+
+          &--beard-8 {
+            transform: translate(53px, 29px);
           }
         }
       }
