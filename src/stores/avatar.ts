@@ -1,9 +1,34 @@
 import { defineStore } from 'pinia';
 
-import type { AvatarWidgets, IWidget } from '@/types';
+import type {
+  AvatarWidgets,
+  IWidget,
+  IWidgetOption,
+  AvailableColors,
+} from '@/types';
+import { COLOR_OPTIONS } from '@/utils/constant';
+
 import type { GedgetsShape, SoccerShape } from '@/enums';
 import { type WidgetType } from '@/enums';
-import { COLOR_OPTIONS } from '@/utils/constant';
+
+export const defaultAvatar = {
+  'accessibility-item': null,
+  bag: null,
+  beard: null,
+  body: { shape: 'body-1', fillColor: '#0E202D' },
+  coat: null,
+  dress: null,
+  face: null,
+  gedgets: [] as IWidget<typeof GedgetsShape>[],
+  glasses: null,
+  headpiece: null,
+  hair: null,
+  necklace: null,
+  pant: null,
+  shoe: null,
+  soccer: [] as IWidget<typeof SoccerShape>[],
+  tshirt: null,
+};
 
 export const useAvatarStore = defineStore({
   id: 'avatar',
@@ -12,7 +37,7 @@ export const useAvatarStore = defineStore({
       'accessibility-item': null,
       bag: null,
       beard: null,
-      body: { shape: 'body-4', fillColor: '#0E202D' },
+      body: { shape: 'body-1', fillColor: '#0E202D' as any as AvailableColors },
       coat: null,
       dress: null,
       face: null,
@@ -38,32 +63,7 @@ export const useAvatarStore = defineStore({
       return body.shape;
     },
     items(state) {
-      const itemsKeys: any[] = Object.keys(state.avatarConfiguration);
-
-      return itemsKeys.reduce((amount, itemKey) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        const item = state.avatarConfiguration[itemKey];
-        if (item === undefined || !item) {
-          return amount;
-        }
-
-        if (Array.isArray(item)) {
-          const mappedItem = item.map((currentItem) => ({
-            ...currentItem,
-            type: itemKey,
-          }));
-
-          amount = [...amount, ...mappedItem];
-        } else {
-          amount.push({
-            ...item,
-            type: itemKey,
-          });
-        }
-
-        return amount;
-      }, []);
+      return state.avatarConfiguration;
     },
   },
   actions: {
@@ -88,7 +88,7 @@ export const useAvatarStore = defineStore({
 
       console.log(this.avatarConfiguration);
     },
-    addWidget(item: WidgetType, shape: string) {
+    addWidget(item: WidgetType, shape: IWidgetOption) {
       if (this.avatarConfiguration[item] === undefined) {
         throw new Error(`Error trying add item "${item}"`);
       }
@@ -96,8 +96,8 @@ export const useAvatarStore = defineStore({
       const [firstColor] = COLOR_OPTIONS;
 
       const widgetData: IWidget<string> = {
-        shape,
-        fillColor: firstColor,
+        shape: shape.item,
+        fillColor: shape.color,
       };
 
       if (item === 'soccer' || item === 'gedgets') {
@@ -135,25 +135,37 @@ export const useAvatarStore = defineStore({
 
       // console.log(this.avatarConfiguration);
     },
-    selectWidgetColor(item: WidgetType, color: string) {
+    selectWidgetColor(item: WidgetType, color: AvailableColors) {
       if (!this.avatarConfiguration[item]) {
         throw new Error(`Error trying find item "${item}"`);
       }
 
       if (item === 'soccer' || item === 'gedgets') {
-        const widgetItem = this.avatarConfiguration[item].find(
+        const widgetItemIndex = this.avatarConfiguration[item].findIndex(
           (widgetItem) => widgetItem.shape === item
         );
 
+        if (widgetItemIndex === -1) {
+          return;
+        }
+
+        const widgetItem = this.avatarConfiguration[item][widgetItemIndex];
+
         if (widgetItem) {
-          widgetItem.fillColor = color;
+          this.avatarConfiguration[item][widgetItemIndex] = {
+            ...widgetItem,
+            fillColor: color,
+          };
         }
       }
 
       if (item !== 'soccer' && item !== 'gedgets') {
         const currentWidget = this.avatarConfiguration[item];
         if (currentWidget) {
-          currentWidget.fillColor = color;
+          this.avatarConfiguration[item] = {
+            ...currentWidget,
+            fillColor: color,
+          };
         }
       }
 

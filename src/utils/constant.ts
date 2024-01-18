@@ -294,13 +294,13 @@ export const COLOR_OPTIONS = [
   '#BDA198',
   '#A37F73',
   '#7F3F3D',
-  '#5B2F2F',
+  '#5C2E2F',
   '#CFD8DC',
   '#91A4AD',
   '#617D8A',
   '#465A63',
   '#37474F',
-];
+] as const;
 
 export const NOT_COMPATIBLE_AGENTS = [
   'quark',
