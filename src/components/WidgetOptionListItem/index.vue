@@ -13,7 +13,9 @@
       <div v-html="svgData" />
     </div>
 
-    <div v-else>{{ item }}</div>
+    <div v-else class="widget-option-list-item__spinner">
+      <img src="/loading.svg" alt="option-loading" />
+    </div>
 
     <div class="widget-option-list-item__action-button">
       <div class="widget-option-list-item__debug">
@@ -137,6 +139,11 @@ onMounted(async () => {
     :deep(svg) {
       max-height: 100px;
     }
+  }
+
+  &__spinner img {
+    width: 70px;
+    height: 70px;
   }
 
   &__action-button {
